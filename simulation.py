@@ -7,12 +7,12 @@ from elliptic_solver import EllipticSolver
 class Puncture:
     """Class that handles construction of puncture data."""
 
-    def __init__(self, bh_location, linear_momentum, grid_dim, x_boundary):
+    def __init__(self, bh_location, linear_momentum, grid_dim, boundary):
         """Arguments to constructor specify physical parameters:
         - location of puncture (bh_location)
         - linear momentum (linear_momentum)
         - size of grid (grid_dim)
-        - outer boundary (x_boundary).
+        - outer boundary (boundary).
         """
         self.bh_location = bh_location
         self.linear_momentum = linear_momentum
@@ -23,20 +23,20 @@ class Puncture:
         print("    with momentum p = (", linear_momentum[0], ",",
               linear_momentum[1], ",", linear_momentum[2], ")")
         print(" Using", grid_dim,
-              "\b^3 gridpoints with outer boundary at", x_boundary)
+              "\b^3 gridpoints with outer boundary at", boundary)
         # set up grid
         self.grid_dim = grid_dim
-        self.x_boundary = x_boundary
-        self.delta = 2.0 * x_boundary / grid_dim
+        self.boundary = boundary
+        self.delta = 2.0 * boundary / grid_dim
 
-        # set up coordinates: use cell-centered grid covering (-x_boundary, x_boundary)
+        # set up coordinates: use cell-centered grid covering (-boundary, boundary)
         # in each dimension; see (B.14)
         half_delta = self.delta / 2.0
-        self.x = linspace(half_delta - x_boundary, x_boundary -
+        self.x = linspace(half_delta - boundary, boundary -
                           half_delta, grid_dim)
-        self.y = linspace(half_delta - x_boundary, x_boundary -
+        self.y = linspace(half_delta - boundary, boundary -
                           half_delta, grid_dim)
-        self.z = linspace(half_delta - x_boundary, x_boundary -
+        self.z = linspace(half_delta - boundary, boundary -
                           half_delta, grid_dim)
 
         # allocate elliptic solver
@@ -174,7 +174,7 @@ class Puncture:
         """Function that writes solution to file."""
 
         filename = "simulation_data_" + \
-            str(self.grid_dim) + "_" + str(self.x_boundary)
+            str(self.grid_dim) + "_" + str(self.boundary)
         filename = filename + ".data"
         out = open(filename, "w")
         if out:
@@ -224,7 +224,7 @@ def main():
     # number of grid points
     grid_dim = 16
     # location of outer boundary
-    x_boundary = 4.0
+    boundary = 4.0
     # tolerance and maximum number of iterations
     tol = 1.0e-12
     it_max = 50
@@ -237,8 +237,8 @@ def main():
             return
         if sys.argv[i] == "-grid_dim":
             grid_dim = int(sys.argv[i+1])
-        if sys.argv[i] == "-x_boundary":
-            x_boundary = float(sys.argv[i+1])
+        if sys.argv[i] == "-boundary":
+            boundary = float(sys.argv[i+1])
         if sys.argv[i] == "-loc_x":
             loc_x = float(sys.argv[i+1])
         if sys.argv[i] == "-loc_y":
@@ -262,7 +262,7 @@ def main():
     linear_momentum = (p_x, p_y, p_z)
     #
     # set up Puncture solver
-    black_hole = Puncture(bh_location, linear_momentum, grid_dim, x_boundary)
+    black_hole = Puncture(bh_location, linear_momentum, grid_dim, boundary)
     #
     # and construct solution
     black_hole.construct_solution(tol, it_max)
@@ -276,13 +276,13 @@ def usage():
     print("")
     print("The following options can be used to over-write default parameters")
     print("\t-grid_dim: number of grid points [default: 16]")
-    print("\t-x_boundary: location of outer boundary [4.0]")
+    print("\t-boundary: location of outer boundary [4.0]")
     print("\t-loc_x, -loc_y, -loc_z: location of black hole [(0.0, 0.0, 0.0)]")
     print("\t-p_x, -p_y, -p_z: lin. momentum of black hole [(1.0, 0.0, 0.0)]")
     print("\t-tol: tolerance for elliptic solver [1.e-12]")
     print("\t-it_max: maximum number of iterations [50]")
-    print("For example, to construct data with x_boundary = 6.0, call")
-    print("\tpython simulation.py -x_boundary 6.0")
+    print("For example, to construct data with boundary = 6.0, call")
+    print("\tpython simulation.py -boundary 6.0")
 
 
 if __name__ == '__main__':

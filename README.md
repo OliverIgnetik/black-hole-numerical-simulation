@@ -4,18 +4,60 @@
 
 This is an attempt at modelling initial data and the associated extrinsic curvature of a black hole with linear momentum. The associated extrinsic curvature is calculated in close proximity to the equatorial plane of the black hole.
 
+![Extrinsic Curvature of Spacetime manifold](img/bh_nasa.gif)
+
+Image credit : [NASA](https://www.nasa.gov/feature/goddard/2019/nasa-visualization-shows-a-black-hole-s-warped-world/)
+
+## Motivation
+
+This project was an attempt to make use of the understanding gained in recent self-directed study of general relativity, the associated tensor calculus and differential geometry.
+
 ## Usage
 
-The script `simulation.py` makes use of the puncture method as described in to construct initial data describing black holes. The environment used for this code can be easily set up using the `anaconda-project.yml` file.
+The script `simulation.py` makes use of the puncture method as described in to construct initial data describing black holes.
+`simulation.py` has a number of flags that can be used to customize the output of the script:
+
+### `simulation.py flags`
+
+```
+-grid_dim (grid points in each dimensions)
+
+-boundary (location of outer boundary)
+
+-loc_x (x coordinate of black hole)
+
+-loc_y (y coordinate of black hole)
+
+-loc_z (z coordinate of black hole)
+
+-p_x (x momentum of black hole)
+
+-p_y (y momentum of black hole)
+
+-p_z (z momentum of black hole)
+
+-tol (tolerance for elliptic solver)
+
+-it_max (maximum number of iterations)
+```
+
+The environment used for this code can be easily set up using the `anaconda-project.yml` file.
 The script will will produce a file called `simulation_data_{grid_dim}_{x_boundary}.data`.
 
 The data file contains values of the function u dependent on x and y on a plane of constant z in close proximity to the equatorial plane.
 
 Once the data has been constructed using `simulation.py` we can make use of `plot_simulation.py` for visualization.
 
+### `plot_simulation.py flags`
+
+```
+-data (puncture data filename)
+-save (save filename for image)
+```
+
 Below is an example of initial data of a black hole with dimensionless linear momentum P = (1,0,0) located at the origin.
 
-![Extrinsic Curvature of Spacetime manifold](example_plot.png)
+![Extrinsic Curvature of Spacetime manifold](img/example_plot.png)
 
 ## Packages
 
@@ -35,7 +77,15 @@ Please see `anaconda-project.yml` for environment dependencies and package versi
 
 ## Future Work
 
+- Write up an accompanying latex formatted article explaining the mathematics of the simulation
 - Generalize this approach to the moving puncture method to model binary neutron star precession
 - Add a Graphical User Interface for easier manipulation of parameters
 
-## References
+## Non-Exhaustive References Used in This Project
+
+1.
+2.
+3.
+4.
+5.
+6.

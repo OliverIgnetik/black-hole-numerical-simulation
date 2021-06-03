@@ -74,7 +74,7 @@ def main():
             return
         if sys.argv[i] == "-data":
             data_file = sys.argv[i+1]
-        if sys.argv[i] == "-plot":
+        if sys.argv[i] == "-save":
             plot_file = sys.argv[i+1]
     #
     # plot puncture data...
@@ -92,8 +92,8 @@ def usage():
         "\t-plot: if provided, plot will be saved to this file [Default: None]")
     print("")
     print("For example, to make a plot of the file simulation_data_24_6.0.data")
-    print("and save to file plot.pdf, call")
-    print("\tpython plot_simulation.py -data simulation_data_24_6.0.data -plot plot.pdf")
+    print("and save to file example.pdf, call")
+    print("\tpython plot_simulation.py -data simulation_data_24_6.0.data -save example.pdf")
 
 
 if __name__ == '__main__':
