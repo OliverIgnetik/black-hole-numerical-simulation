@@ -17,13 +17,13 @@ class Puncture:
         self.bh_location = bh_location
         self.linear_momentum = linear_momentum
         # echo out parameters
-        print(" Constructing class Puncture for single black hole")
-        print("    at bh_location = (", bh_location[0], ",", bh_location[1], ",",
-              bh_location[2], ")")
-        print("    with momentum p = (", linear_momentum[0], ",",
-              linear_momentum[1], ",", linear_momentum[2], ")")
-        print(" Using", grid_dim,
-              "\b^3 gridpoints with outer boundary at", boundary)
+        print("Constructing class Puncture for single black hole")
+        print(
+            f"at bh_location = ({bh_location[0]}, {bh_location[1]}, {bh_location[2]} )")
+        print(
+            f"with momentum p = ({linear_momentum[0]},{linear_momentum[1]}, {linear_momentum[2]}")
+        print(
+            f"Using {grid_dim}\b^3 gridpoints with outer boundary at {boundary}")
         # set up grid
         self.grid_dim = grid_dim
         self.boundary = boundary
@@ -54,9 +54,9 @@ class Puncture:
 
         self.__setup_alpha_beta()
         residual_norm = self.__residual()
-        print(" Initial Residual = ", residual_norm)
-        print(" Using up to", it_max, "iteration steps to reach tolerance of",
-              tol)
+        print(f"Initial Residual = { residual_norm}")
+        print(
+            f"Using up to {it_max} iteration steps to reach tolerance of {tol}")
 
         # now iterate...
         it_step = 0
@@ -64,11 +64,13 @@ class Puncture:
             it_step += 1
             self.__update_u()
             residual_norm = self.__residual()
-            print(" Residual after", it_step, "iterations :", residual_norm)
+            print(f"Residual after {it_step} iterations : {residual_norm}")
+
         if (residual_norm < tol):
             print(" Done!")
         else:
-            print(" Giving up...")
+            raise RuntimeError(
+                'It is not possible to reduce the residual norm below {tol}\n Terminating simulation...')
 
     def __update_u(self) -> None:
         """Function that updates u using Poisson solver;
@@ -195,8 +197,8 @@ class Puncture:
                 out.write("\n")
             out.close()
         else:
-            print(" Could not open file", filename, "in write_to_file()")
-            print(" Check permissions?")
+            raise PermissionError(
+                f"Could not open file filename, in write_to_file() \nCheck permissions?")
 #
 # =====================================================================
 # Main routine: defines parameters, sets up puncture solver, and
@@ -273,7 +275,7 @@ def main():
 
 def usage():
     print("Constructs puncture initial data for single black hole.")
-    print("")
+    print("-"*30)
     print("The following options can be used to over-write default parameters")
     print("\t-grid_dim: number of grid points [default: 16]")
     print("\t-boundary: location of outer boundary [4.0]")

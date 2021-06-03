@@ -9,12 +9,6 @@ class EllipticSolver:
         - D^2 is the flat Laplace operator
         - fct and rhs are user-supplied functions of the coordinates x, y, z,
         - and sol is the solution.
-
-    To use this class:
-        - initialize the class, providing Cartesian coordinates x, y, and z
-        - call setup_matrix(fct) to set up the operator
-        - call setup_rhs(rhs) to set up the right-hand side
-        - then a call to solve() returns the solution sol
     """
 
     def __init__(self, x: float, y: float, z: float) -> None:
@@ -22,14 +16,13 @@ class EllipticSolver:
         as arguments.
         """
 
-        print(" Setting up Poisson solver...")
+        print("Setting up Poisson solver...")
         self.n_grid = np.size(x)
         self.delta = x[1] - x[0]
 
         # set up storage for matrix, solution, r.h.s.
         # Note: "sol" and "rhs" will store functions in 3d format, while
-        # "sol_1d" and "rhs_1d" will store functions in 1d format using
-        # super-index
+        # "sol_1d" and "rhs_1d" will store functions in 1d format
         nnn = self.n_grid ** 3
         self.rhs_1d = np.zeros(nnn)
         self.A = np.zeros((nnn, nnn))

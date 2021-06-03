@@ -16,8 +16,7 @@ def puncture_plot(data_file: str, plot_file=0) -> None:
     if f:
         print("Reading data from file", data_file)
     else:
-        print("Cannot open data file", data_file)
-        return
+        raise FileNotFoundError(f"Cannot open data file {data_file}")
     x, y, fct = np.loadtxt(data_file, unpack=True)
     f.close()
     #
@@ -84,13 +83,13 @@ def main():
 
 def usage():
     print("Creates plots from data files produced with simulation.py.")
-    print("")
+    print("-"*30)
     print("The following options can be used to over-write default parameters")
     print(
         "\t-data: provide name of data_file [Default: simulation_data_16_4.0.data] ")
     print(
         "\t-plot: if provided, plot will be saved to this file [Default: None]")
-    print("")
+    print("-"*30)
     print("For example, to make a plot of the file simulation_data_24_6.0.data")
     print("and save to file example.pdf, call")
     print("\tpython plot_simulation.py -data simulation_data_24_6.0.data -save example.pdf")
