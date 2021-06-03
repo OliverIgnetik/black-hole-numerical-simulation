@@ -14,7 +14,7 @@ This project was an attempt to make use of the understanding gained in recent se
 
 ## Usage
 
-The script `simulation.py` makes use of the puncture method as described in to construct initial data describing black holes.
+The script `simulation.py` makes use of the puncture method as described in Baumgarte et al. [3], to construct initial data describing the conformal deviation of spacetime on the equatorial plane of a non-rotating black hole.
 `simulation.py` has a number of flags that can be used to customize the output of the script:
 
 ### `simulation.py flags`
@@ -77,6 +77,7 @@ Please see `anaconda-project.yml` for environment dependencies and package versi
 
 ## Future Work
 
+- Generalize approach to account for black holes with angular momentum
 - Write up an accompanying latex formatted article explaining the mathematics of the simulation
 - Generalize this approach to the moving puncture method to model binary neutron star precession
 - Add a Graphical User Interface for easier manipulation of parameters

@@ -48,7 +48,7 @@ class EllipticSolver:
 
         n_grid = self.n_grid
 
-        # Use Robin boundary conditions (B.30) to set up boundaries
+        # Use Robin boundary conditions to set up boundaries
         i = 0  # lower x-boundary
         for j in range(0, n_grid):
             for k in range(0, n_grid):
@@ -91,7 +91,7 @@ class EllipticSolver:
                 self.A[index, index] = self.rad[i, j, k]
                 self.A[index, index - n_grid * n_grid] = -self.rad[i, j, k - 1]
 
-        # use (B.29) to fill matrix in interior
+        # fill matrix in interior
         for i in range(1, n_grid - 1):
             for j in range(1, n_grid - 1):
                 for k in range(1, n_grid - 1):
