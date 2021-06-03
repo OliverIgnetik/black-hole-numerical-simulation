@@ -2,7 +2,7 @@
 
 ## Overview
 
-This is an attempt at modelling initial data and the associated extrinsic curvature of a black hole with linear momentum. The associated extrinsic curvature is calculated in close proximity to the equatorial plane of the black hole.
+This is an attempt at modelling initial data and the associated extrinsic curvature of a black hole with linear momentum. The associated extrinsic curvature is calculated in close proximity to the equatorial plane of the black hole. The approach is based on the puncture method outlined in Baumgarte et al. [3].
 
 ![Extrinsic Curvature of Spacetime manifold](img/bh_nasa.gif)
 
@@ -81,11 +81,28 @@ Please see `anaconda-project.yml` for environment dependencies and package versi
 - Generalize this approach to the moving puncture method to model binary neutron star precession
 - Add a Graphical User Interface for easier manipulation of parameters
 
-## Non-Exhaustive References Used in This Project
+## Non-Exhaustive References
 
-1.
-2.
-3.
-4.
-5.
-6.
+### Numerical Relativity
+
+[1]E. Gourgoulhon, _3+1 formalism in general relativity_. Heidelberg: Springer, 2012.
+
+[2]M. Shibata, _Numerical relativity_. Singapore: World Scientific Publishing Co. Pte. Ltd., 2016.
+
+[3]T. Baumgarte and S. Shapiro, _Numerical relativity_. Cambridge: Cambridge University Press, 2010.
+
+### General Relativity and Differential Geometry
+
+[4] B. Schutz, _A first course in general relativity_. Cambridge [etc.]: Cambridge University Press, 2018.
+
+[5] C. Misner, K. Thorne and J. Wheeler, _Gravitation_. New York: Freeman, 1995.
+
+[6] S. Chandrasekhar, _The mathematical theory of black holes_. Oxford u.a.: Clarendon Press, 1992.
+
+[7] D. Neuenschwander, _Tensor calculus for physics_. John Hopkins University Press, 2015.
+
+[8] S. Carroll, _Spacetime and geometry_. Harlow: Pearson, 2014.
+
+[9] N. Straumann, _General relativity_. Heidelberg: Springer, 2013.
+
+[10] J. Hubbard and B. Hubbard, _Vector calculus, linear algebra, and differential forms_, 5th ed. New York: Matrix Editions, 2015.
