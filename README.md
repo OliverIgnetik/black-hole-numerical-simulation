@@ -2,7 +2,7 @@
 
 ## Overview
 
-This is an attempt at modelling initial data and the associated extrinsic curvature of a black hole with linear momentum. The associated extrinsic curvature is calculated in close proximity to the equatorial plane of the black hole. The approach is based on the puncture method outlined in Baumgarte et al. [3].
+This is an attempt at modelling initial data and the associated conformal deviation of spacetime around a black hole with linear momentum. The curvature is calculated in close proximity to the equatorial plane of the black hole. The approach is based on the puncture method outlined in Baumgarte et al. [3].
 
 ![Extrinsic Curvature of Spacetime manifold](img/bh_nasa.gif)
 
