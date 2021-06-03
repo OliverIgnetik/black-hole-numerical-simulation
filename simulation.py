@@ -7,45 +7,46 @@ from elliptic_solver import EllipticSolver
 class Puncture:
     """Class that handles construction of puncture data."""
 
-    def __init__(self, bh_loc, lin_mom, n_grid, x_out):
+    def __init__(self, bh_location, linear_momentum, grid_dim, x_boundary):
         """Arguments to constructor specify physical parameters:
-        - location of puncture (bh_loc)
-        - linear momentum (lin_mom)
-        - size of grid (n_grid)
-        - outer boundary (x_out).
+        - location of puncture (bh_location)
+        - linear momentum (linear_momentum)
+        - size of grid (grid_dim)
+        - outer boundary (x_boundary).
         """
-        self.bh_loc = bh_loc
-        self.lin_mom = lin_mom
+        self.bh_location = bh_location
+        self.linear_momentum = linear_momentum
         # echo out parameters
         print(" Constructing class Puncture for single black hole")
-        print("    at bh_loc = (", bh_loc[0], ",", bh_loc[1], ",",
-              bh_loc[2], ")")
-        print("    with momentum p = (", lin_mom[0], ",",
-              lin_mom[1], ",", lin_mom[2], ")")
-        print(" Using", n_grid, "\b^3 gridpoints with outer boundary at", x_out)
+        print("    at bh_location = (", bh_location[0], ",", bh_location[1], ",",
+              bh_location[2], ")")
+        print("    with momentum p = (", linear_momentum[0], ",",
+              linear_momentum[1], ",", linear_momentum[2], ")")
+        print(" Using", grid_dim,
+              "\b^3 gridpoints with outer boundary at", x_boundary)
         # set up grid
-        self.n_grid = n_grid
-        self.x_out = x_out
-        self.delta = 2.0 * x_out / n_grid
+        self.grid_dim = grid_dim
+        self.x_boundary = x_boundary
+        self.delta = 2.0 * x_boundary / grid_dim
 
-        # set up coordinates: use cell-centered grid covering (-x_out, x_out)
+        # set up coordinates: use cell-centered grid covering (-x_boundary, x_boundary)
         # in each dimension; see (B.14)
         half_delta = self.delta / 2.0
-        self.x = linspace(half_delta - x_out, x_out -
-                          half_delta, n_grid)
-        self.y = linspace(half_delta - x_out, x_out -
-                          half_delta, n_grid)
-        self.z = linspace(half_delta - x_out, x_out -
-                          half_delta, n_grid)
+        self.x = linspace(half_delta - x_boundary, x_boundary -
+                          half_delta, grid_dim)
+        self.y = linspace(half_delta - x_boundary, x_boundary -
+                          half_delta, grid_dim)
+        self.z = linspace(half_delta - x_boundary, x_boundary -
+                          half_delta, grid_dim)
 
         # allocate elliptic solver
         self.solver = EllipticSolver(self.x, self.y, self.z)
 
         # allocate memory for functions u, alpha, beta, and residual
-        self.alpha = zeros((n_grid, n_grid, n_grid))
-        self.beta = zeros((n_grid, n_grid, n_grid))
-        self.u = zeros((n_grid, n_grid, n_grid))
-        self.res = zeros((n_grid, n_grid, n_grid))
+        self.alpha = zeros((grid_dim, grid_dim, grid_dim))
+        self.beta = zeros((grid_dim, grid_dim, grid_dim))
+        self.u = zeros((grid_dim, grid_dim, grid_dim))
+        self.res = zeros((grid_dim, grid_dim, grid_dim))
 
     def construct_solution(self, tol, it_max):
         """Construct solution iteratively, provide tolerance and maximum
@@ -75,13 +76,13 @@ class Puncture:
         """
 
         # set up linear term and right-hand side for SolvePoisson...
-        n_grid = self.n_grid
-        fct = zeros((n_grid, n_grid, n_grid))
-        rhs = zeros((n_grid, n_grid, n_grid))
+        grid_dim = self.grid_dim
+        fct = zeros((grid_dim, grid_dim, grid_dim))
+        rhs = zeros((grid_dim, grid_dim, grid_dim))
 
-        for i in range(1, n_grid - 1):
-            for j in range(1, n_grid - 1):
-                for k in range(1, n_grid - 1):
+        for i in range(1, grid_dim - 1):
+            for j in range(1, grid_dim - 1):
+                for k in range(1, grid_dim - 1):
                     # compute h' from (B.39)
                     temp = self.alpha[i, j, k] * (1.0 + self.u[i, j, k]) + 1.0
                     fct[i, j, k] = (-7.0 * self.beta[i, j, k] *
@@ -104,9 +105,9 @@ class Puncture:
         """Evaluate residual"""
 
         residual_norm = 0.0
-        for i in range(1, self.n_grid - 1):
-            for j in range(1, self.n_grid - 1):
-                for k in range(1, self.n_grid - 1):
+        for i in range(1, self.grid_dim - 1):
+            for j in range(1, self.grid_dim - 1):
+                for k in range(1, self.grid_dim - 1):
 
                     # compute left-hand side: Laplace operator
                     ddx = (self.u[i + 1, j, k] - 2.0 * self.u[i, j, k] +
@@ -132,17 +133,17 @@ class Puncture:
     def __setup_alpha_beta(self):
         """Set up functions alpha and beta."""
 
-        n_grid = self.n_grid
-        p_x = self.lin_mom[0]
-        p_y = self.lin_mom[1]
-        p_z = self.lin_mom[2]
+        grid_dim = self.grid_dim
+        p_x = self.linear_momentum[0]
+        p_y = self.linear_momentum[1]
+        p_z = self.linear_momentum[2]
 
-        for i in range(0, n_grid):
-            for j in range(0, n_grid):
-                for k in range(0, n_grid):
-                    s_x = self.x[i] - self.bh_loc[0]
-                    s_y = self.y[j] - self.bh_loc[1]
-                    s_z = self.z[k] - self.bh_loc[2]
+        for i in range(0, grid_dim):
+            for j in range(0, grid_dim):
+                for k in range(0, grid_dim):
+                    s_x = self.x[i] - self.bh_location[0]
+                    s_y = self.y[j] - self.bh_location[1]
+                    s_z = self.z[k] - self.bh_location[2]
                     s2 = s_x ** 2 + s_y ** 2 + s_z ** 2
                     s_bh = sqrt(s2)
                     l_x = s_x / s_bh
@@ -173,22 +174,22 @@ class Puncture:
         """Function that writes solution to file."""
 
         filename = "simulation_data_" + \
-            str(self.n_grid) + "_" + str(self.x_out)
+            str(self.grid_dim) + "_" + str(self.x_boundary)
         filename = filename + ".data"
         out = open(filename, "w")
         if out:
-            k = self.n_grid // 2
+            k = self.grid_dim // 2
             out.write(
                 "# Data for black hole at x = (%f,%f,%f)\n"
-                % (self.bh_loc[0], self.bh_loc[1], self.bh_loc[2])
+                % (self.bh_location[0], self.bh_location[1], self.bh_location[2])
             )
             out.write("# with linear momentum P = (%f, %f, %f)\n" %
-                      (self.lin_mom))
+                      (self.linear_momentum))
             out.write("# in plane for z = %e \n" % (self.z[k]))
             out.write("# x            y              u              \n")
             out.write("#============================================\n")
-            for i in range(0, self.n_grid):
-                for j in range(0, self.n_grid):
+            for i in range(0, self.grid_dim):
+                for j in range(0, self.grid_dim):
                     out.write("%e  %e  %e\n" % (self.x[i], self.y[j],
                                                 self.u[i, j, k]))
                 out.write("\n")
@@ -221,9 +222,9 @@ def main():
     p_y = 0.0
     p_z = 0.0
     # number of grid points
-    n_grid = 16
+    grid_dim = 16
     # location of outer boundary
-    x_out = 4.0
+    x_boundary = 4.0
     # tolerance and maximum number of iterations
     tol = 1.0e-12
     it_max = 50
@@ -234,10 +235,10 @@ def main():
         if sys.argv[i] == "-h":
             usage()
             return
-        if sys.argv[i] == "-n_grid":
-            n_grid = int(sys.argv[i+1])
-        if sys.argv[i] == "-x_out":
-            x_out = float(sys.argv[i+1])
+        if sys.argv[i] == "-grid_dim":
+            grid_dim = int(sys.argv[i+1])
+        if sys.argv[i] == "-x_boundary":
+            x_boundary = float(sys.argv[i+1])
         if sys.argv[i] == "-loc_x":
             loc_x = float(sys.argv[i+1])
         if sys.argv[i] == "-loc_y":
@@ -256,12 +257,12 @@ def main():
             it_max = int(sys.argv[i+1])
 
     # location of puncture
-    bh_loc = (loc_x, loc_y, loc_z)
+    bh_location = (loc_x, loc_y, loc_z)
     # linear momentum
-    lin_mom = (p_x, p_y, p_z)
+    linear_momentum = (p_x, p_y, p_z)
     #
     # set up Puncture solver
-    black_hole = Puncture(bh_loc, lin_mom, n_grid, x_out)
+    black_hole = Puncture(bh_location, linear_momentum, grid_dim, x_boundary)
     #
     # and construct solution
     black_hole.construct_solution(tol, it_max)
@@ -274,14 +275,14 @@ def usage():
     print("Constructs puncture initial data for single black hole.")
     print("")
     print("The following options can be used to over-write default parameters")
-    print("\t-n_grid: number of grid points [default: 16]")
-    print("\t-x_out: location of outer boundary [4.0]")
+    print("\t-grid_dim: number of grid points [default: 16]")
+    print("\t-x_boundary: location of outer boundary [4.0]")
     print("\t-loc_x, -loc_y, -loc_z: location of black hole [(0.0, 0.0, 0.0)]")
     print("\t-p_x, -p_y, -p_z: lin. momentum of black hole [(1.0, 0.0, 0.0)]")
     print("\t-tol: tolerance for elliptic solver [1.e-12]")
     print("\t-it_max: maximum number of iterations [50]")
-    print("For example, to construct data with x_out = 6.0, call")
-    print("\tpython simulation.py -x_out 6.0")
+    print("For example, to construct data with x_boundary = 6.0, call")
+    print("\tpython simulation.py -x_boundary 6.0")
 
 
 if __name__ == '__main__':

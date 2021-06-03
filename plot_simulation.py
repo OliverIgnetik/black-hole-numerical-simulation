@@ -93,7 +93,7 @@ def usage():
     print("")
     print("For example, to make a plot of the file simulation_data_24_6.0.data")
     print("and save to file plot.pdf, call")
-    print("\tpython3 plot_simulation.py -data simulation_data_24_6.0.data -plot plot.pdf")
+    print("\tpython plot_simulation.py -data simulation_data_24_6.0.data -plot plot.pdf")
 
 
 if __name__ == '__main__':
