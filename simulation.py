@@ -7,7 +7,7 @@ from elliptic_solver import EllipticSolver
 class Puncture:
     """Class that handles construction of puncture data."""
 
-    def __init__(self, bh_location, linear_momentum, grid_dim, boundary):
+    def __init__(self, bh_location: tuple[float, float, float], linear_momentum: tuple[float, float, float], grid_dim: int, boundary: float) -> None:
         """Arguments to constructor specify physical parameters:
         - location of puncture (bh_location)
         - linear momentum (linear_momentum)
@@ -48,7 +48,7 @@ class Puncture:
         self.u = zeros((grid_dim, grid_dim, grid_dim))
         self.res = zeros((grid_dim, grid_dim, grid_dim))
 
-    def construct_solution(self, tol, it_max):
+    def construct_solution(self, tol: float, it_max: float) -> None:
         """Construct solution iteratively, provide tolerance and maximum
         number of iterations as arguments."""
 
@@ -70,7 +70,7 @@ class Puncture:
         else:
             print(" Giving up...")
 
-    def __update_u(self):
+    def __update_u(self) -> None:
         """Function that updates u using Poisson solver;
         takes one iteration step.
         """
@@ -101,7 +101,7 @@ class Puncture:
         # update u
         self.u += delta_u
 
-    def __residual(self):
+    def __residual(self) -> float:
         """Evaluate residual"""
 
         residual_norm = 0.0
@@ -130,7 +130,7 @@ class Puncture:
         residual_norm = sqrt(residual_norm) * self.delta ** 3
         return residual_norm
 
-    def __setup_alpha_beta(self):
+    def __setup_alpha_beta(self) -> None:
         """Set up functions alpha and beta."""
 
         grid_dim = self.grid_dim
@@ -170,7 +170,7 @@ class Puncture:
                     self.alpha[i, j, k] = 2.0 * s_bh
                     self.beta[i, j, k] = self.alpha[i, j, k] ** 7 * A2 / 8.0
 
-    def write_to_file(self):
+    def write_to_file(self) -> None:
         """Function that writes solution to file."""
 
         filename = "simulation_data_" + \

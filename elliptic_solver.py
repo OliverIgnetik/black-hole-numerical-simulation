@@ -1,4 +1,4 @@
-from numpy import zeros, size, sqrt
+import numpy as np
 import scipy.linalg as la
 
 
@@ -17,13 +17,13 @@ class EllipticSolver:
         - then a call to solve() returns the solution sol
     """
 
-    def __init__(self, x, y, z):
+    def __init__(self, x: float, y: float, z: float) -> None:
         """Constructor - provide Cartesian coordinates, all of length n_grid,
         as arguments.
         """
 
         print(" Setting up Poisson solver...")
-        self.n_grid = size(x)
+        self.n_grid = np.size(x)
         self.delta = x[1] - x[0]
 
         # set up storage for matrix, solution, r.h.s.
@@ -31,19 +31,19 @@ class EllipticSolver:
         # "sol_1d" and "rhs_1d" will store functions in 1d format using
         # super-index
         nnn = self.n_grid ** 3
-        self.rhs_1d = zeros(nnn)
-        self.A = zeros((nnn, nnn))
-        self.sol = zeros((self.n_grid, self.n_grid, self.n_grid))
-        self.rad = zeros((self.n_grid, self.n_grid, self.n_grid))
+        self.rhs_1d = np.zeros(nnn)
+        self.A = np.zeros((nnn, nnn))
+        self.sol = np.zeros((self.n_grid, self.n_grid, self.n_grid))
+        self.rad = np.zeros((self.n_grid, self.n_grid, self.n_grid))
 
         # compute radius
         for i in range(0, self.n_grid):
             for j in range(0, self.n_grid):
                 for k in range(0, self.n_grid):
                     rad2 = x[i] ** 2 + y[j] ** 2 + z[k] ** 2
-                    self.rad[i, j, k] = sqrt(rad2)
+                    self.rad[i, j, k] = np.sqrt(rad2)
 
-    def setup_matrix(self, fct):
+    def setup_matrix(self, fct: np.ndarray) -> None:
         """Set up matrix A."""
 
         n_grid = self.n_grid
@@ -108,7 +108,7 @@ class EllipticSolver:
                     self.A[index, index - n_grid * n_grid] = 1.0
                     self.A[index, index + n_grid * n_grid] = 1.0
 
-    def setup_rhs(self, rhs):
+    def setup_rhs(self, rhs: np.ndarray) -> None:
         """Setup right-hand side of matrix equation"""
 
         n_grid = self.n_grid
@@ -118,7 +118,7 @@ class EllipticSolver:
                     index = self.__super_index(i, j, k)
                     self.rhs_1d[index] = self.delta ** 2 * rhs[i, j, k]
 
-    def solve(self):
+    def solve(self) -> np.ndarray:
         """Interface to scipy.linalg matrix solver,
         returns sol (in 3d format)."""
 
@@ -134,6 +134,6 @@ class EllipticSolver:
 
         return self.sol
 
-    def __super_index(self, i, j, k):
+    def __super_index(self, i: int, j: int, k: int) -> int:
         """Compute super index"""
         return i + self.n_grid * (j + self.n_grid * k)

@@ -2,7 +2,7 @@
 
 ## Overview
 
-This is an attempt at modelling initial data and the associated conformal deviation of spacetime around a black hole with linear momentum. The curvature is calculated in close proximity to the equatorial plane of the black hole. The approach is based on the puncture method outlined in Baumgarte et al. [3].
+This is an attempt at modelling initial data and the associated conformal deviation of spacetime around a black hole with linear momentum. The curvature is calculated in close proximity to the equatorial plane of the black hole. The approach is based on the puncture method outlined in Shibata [2].
 
 ![Extrinsic Curvature of Spacetime manifold](img/bh_nasa.gif)
 
@@ -14,30 +14,21 @@ This project was an attempt to make use of the understanding gained in recent se
 
 ## Usage
 
-The script `simulation.py` makes use of the puncture method as described in Baumgarte et al. [3], to construct initial data describing the conformal deviation of spacetime on the equatorial plane of a non-rotating black hole.
+The script `simulation.py` makes use of the puncture method as described in Shibata [2], to construct initial data describing the conformal deviation of spacetime on the equatorial plane of a non-rotating black hole.
 `simulation.py` has a number of flags that can be used to customize the output of the script:
 
 ### `simulation.py flags`
 
 ```
 -grid_dim (grid points in each dimensions)
-
 -boundary (location of outer boundary)
-
 -loc_x (x coordinate of black hole)
-
 -loc_y (y coordinate of black hole)
-
 -loc_z (z coordinate of black hole)
-
 -p_x (x momentum of black hole)
-
 -p_y (y momentum of black hole)
-
 -p_z (z momentum of black hole)
-
 -tol (tolerance for elliptic solver)
-
 -it_max (maximum number of iterations)
 ```
 
@@ -86,11 +77,11 @@ Please see `anaconda-project.yml` for environment dependencies and package versi
 
 ### Numerical Relativity
 
-[1]E. Gourgoulhon, _3+1 formalism in general relativity_. Heidelberg: Springer, 2012.
+[1] E. Gourgoulhon, _3+1 formalism in general relativity_. Heidelberg: Springer, 2012.
 
-[2]M. Shibata, _Numerical relativity_. Singapore: World Scientific Publishing Co. Pte. Ltd., 2016.
+[2] M. Shibata, _Numerical relativity_. Singapore: World Scientific Publishing Co. Pte. Ltd., 2016.
 
-[3]T. Baumgarte and S. Shapiro, _Numerical relativity_. Cambridge: Cambridge University Press, 2010.
+[3] T. Baumgarte and S. Shapiro, _Numerical relativity_. Cambridge: Cambridge University Press, 2010.
 
 ### General Relativity and Differential Geometry
 

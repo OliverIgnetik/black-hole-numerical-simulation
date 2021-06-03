@@ -8,7 +8,7 @@ import matplotlib
 from distutils.spawn import find_executable
 
 
-def puncture_plot(data_file, plot_file=0):
+def puncture_plot(data_file: str, plot_file=0) -> None:
     if find_executable('latex'):
         rc('text', usetex=True)
     #
