@@ -55,14 +55,14 @@ def puncture_plot(data_file, plot_file=0):
 def main():
     """Main routine..."""
     print(" ------------------------------------------------------------")
-    print(" --- puncture_plot.py --- use flag -h for list of options ---")
+    print(" --- simulation_plot.py --- use flag -h for list of options ---")
     print(" ------------------------------------------------------------")
     # print("Using matplotlib version", matplotlib.__version__)
     #
     # set default values for variables
     #
     # data filename
-    data_file = "Puncture_16_4.0.data"
+    data_file = "simulation_data_16_4.0.data"
     # filename to be plotted to (set to zero for display on screen)
     plot_file = 0
     #
