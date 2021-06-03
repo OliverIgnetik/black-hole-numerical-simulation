@@ -1,0 +1,13 @@
+.vscode
+envs
+
+# Python caching
+*.pyc
+*.pyd
+*.pyo
+__pycache__/
+
+# Jupyter & Spyder stuff
+.ipynb_checkpoints/
+.Trash-*/
+/.spyderproject
