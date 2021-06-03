@@ -83,24 +83,18 @@ def main():
 
 
 def usage():
-    print("Creates plots from data files produced with puncture.py.")
+    print("Creates plots from data files produced with simulation.py.")
     print("")
     print("The following options can be used to over-write default parameters")
     print(
-        "\t-data: provide name of data_file [Default: Puncture_16_4.0.data] ")
+        "\t-data: provide name of data_file [Default: simulation_data_16_4.0.data] ")
     print(
         "\t-plot: if provided, plot will be saved to this file [Default: None]")
     print("")
-    print("For example, to make a plot of the file Puncture_24_6.0.data")
+    print("For example, to make a plot of the file simulation_data_24_6.0.data")
     print("and save to file plot.pdf, call")
-    print("\tpython3 puncture_plot.py -data Puncture_24_6.0.data -plot plot.pdf")
+    print("\tpython3 plot_simulation.py -data simulation_data_24_6.0.data -plot plot.pdf")
 
 
 if __name__ == '__main__':
     main()
-
-
-# puncture()
-# compare_formulations()
-# convergence()
-# outbound_convergence()

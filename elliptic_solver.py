@@ -1,6 +1,7 @@
 from numpy import zeros, size, sqrt
 import scipy.linalg as la
 
+
 class EllipticSolver:
     """Class Elliptic solves Poisson-type elliptic equations of the form:
           D^2 sol + fct sol = rhs
@@ -51,42 +52,42 @@ class EllipticSolver:
         i = 0  # lower x-boundary
         for j in range(0, n_grid):
             for k in range(0, n_grid):
-                index = self.super_index(i, j, k)
+                index = self.__super_index(i, j, k)
                 self.A[index, index] = self.rad[i, j, k]
                 self.A[index, index + 1] = -self.rad[i + 1, j, k]
 
         i = n_grid - 1  # upper x-boundary
         for j in range(0, n_grid):
             for k in range(0, n_grid):
-                index = self.super_index(i, j, k)
+                index = self.__super_index(i, j, k)
                 self.A[index, index] = self.rad[i, j, k]
                 self.A[index, index - 1] = -self.rad[i - 1, j, k]
 
         j = 0  # lower y-boundary
         for i in range(1, n_grid - 1):
             for k in range(0, n_grid):
-                index = self.super_index(i, j, k)
+                index = self.__super_index(i, j, k)
                 self.A[index, index] = self.rad[i, j, k]
                 self.A[index, index + n_grid] = -self.rad[i, j + 1, k]
 
         j = n_grid - 1  # upper y-boundary
         for i in range(1, n_grid - 1):
             for k in range(0, n_grid):
-                index = self.super_index(i, j, k)
+                index = self.__super_index(i, j, k)
                 self.A[index, index] = self.rad[i, j, k]
                 self.A[index, index - n_grid] = -self.rad[i, j - 1, k]
 
         k = 0  # lower z-boundary
         for i in range(1, n_grid - 1):
             for j in range(1, n_grid - 1):
-                index = self.super_index(i, j, k)
+                index = self.__super_index(i, j, k)
                 self.A[index, index] = self.rad[i, j, k]
                 self.A[index, index + n_grid * n_grid] = -self.rad[i, j, k + 1]
 
         k = n_grid - 1  # upper z-boundary
         for i in range(1, n_grid - 1):
             for j in range(1, n_grid - 1):
-                index = self.super_index(i, j, k)
+                index = self.__super_index(i, j, k)
                 self.A[index, index] = self.rad[i, j, k]
                 self.A[index, index - n_grid * n_grid] = -self.rad[i, j, k - 1]
 
@@ -94,7 +95,7 @@ class EllipticSolver:
         for i in range(1, n_grid - 1):
             for j in range(1, n_grid - 1):
                 for k in range(1, n_grid - 1):
-                    index = self.super_index(i, j, k)
+                    index = self.__super_index(i, j, k)
 
                     # diagonal element
                     self.A[index, index] = -6. + self.delta ** 2 * fct[i, j, k]
@@ -114,7 +115,7 @@ class EllipticSolver:
         for i in range(1, n_grid - 1):
             for j in range(1, n_grid - 1):
                 for k in range(1, n_grid - 1):
-                    index = self.super_index(i, j, k)
+                    index = self.__super_index(i, j, k)
                     self.rhs_1d[index] = self.delta ** 2 * rhs[i, j, k]
 
     def solve(self):
@@ -128,11 +129,11 @@ class EllipticSolver:
         for i in range(0, self.n_grid):
             for j in range(0, self.n_grid):
                 for k in range(0, self.n_grid):
-                    index = self.super_index(i, j, k)
+                    index = self.__super_index(i, j, k)
                     self.sol[i, j, k] = sol_1d[index]
 
         return self.sol
 
-    def super_index(self, i, j, k):
+    def __super_index(self, i, j, k):
         """Compute super index"""
         return i + self.n_grid * (j + self.n_grid * k)

@@ -26,7 +26,7 @@ description: Puncture method simulation for a single black hole with linear mome
 #
 commands:
   run_simulation:
-    windows: python simulation.py
+    windows: python simulation.py -n_grid 20
     env_spec: default
 
 #
@@ -34,9 +34,10 @@ commands:
 # Use `anaconda-project add-variable` to add variables.
 #
   plot_simulation:
-    windows: python plot_simulation.py
+    windows: python plot_simulation.py -data simulation_data_20_4.0.data
     env_spec: default
-variables: {}
+variables:
+  N_GRID: 20
 
 #
 # In the services section, list any services that should be
@@ -72,6 +73,7 @@ packages:
 # channels:
 #    - mychannel
 #
+- autopep8
 channels: []
 
 #

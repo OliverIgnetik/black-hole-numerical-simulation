@@ -1,16 +1,11 @@
 """Code to construct puncture initial data for single black hole."""
 import sys
 from numpy import zeros, sqrt, linspace
-
 from elliptic_solver import EllipticSolver
 
-class Puncture:
-    """Class that handles construction of puncture data.
 
-    To use this class,
-       - initialize class with physical parameters as arguments
-       - then call construct_solution.
-    """
+class Puncture:
+    """Class that handles construction of puncture data."""
 
     def __init__(self, bh_loc, lin_mom, n_grid, x_out):
         """Arguments to constructor specify physical parameters:
@@ -56,8 +51,8 @@ class Puncture:
         """Construct solution iteratively, provide tolerance and maximum
         number of iterations as arguments."""
 
-        self.setup_alpha_beta()
-        residual_norm = self.residual()
+        self.__setup_alpha_beta()
+        residual_norm = self.__residual()
         print(" Initial Residual = ", residual_norm)
         print(" Using up to", it_max, "iteration steps to reach tolerance of",
               tol)
@@ -66,15 +61,15 @@ class Puncture:
         it_step = 0
         while residual_norm > tol and it_step < it_max:
             it_step += 1
-            self.update_u()
-            residual_norm = self.residual()
+            self.__update_u()
+            residual_norm = self.__residual()
             print(" Residual after", it_step, "iterations :", residual_norm)
         if (residual_norm < tol):
             print(" Done!")
         else:
             print(" Giving up...")
 
-    def update_u(self):
+    def __update_u(self):
         """Function that updates u using Poisson solver;
         takes one iteration step.
         """
@@ -105,8 +100,8 @@ class Puncture:
         # update u
         self.u += delta_u
 
-    def residual(self):
-        """Evaluate residual, see (B.35)."""
+    def __residual(self):
+        """Evaluate residual"""
 
         residual_norm = 0.0
         for i in range(1, self.n_grid - 1):
@@ -134,7 +129,7 @@ class Puncture:
         residual_norm = sqrt(residual_norm) * self.delta ** 3
         return residual_norm
 
-    def setup_alpha_beta(self):
+    def __setup_alpha_beta(self):
         """Set up functions alpha and beta."""
 
         n_grid = self.n_grid
@@ -177,7 +172,8 @@ class Puncture:
     def write_to_file(self):
         """Function that writes solution to file."""
 
-        filename = "simulation_data_" + str(self.n_grid) + "_" + str(self.x_out)
+        filename = "simulation_data_" + \
+            str(self.n_grid) + "_" + str(self.x_out)
         filename = filename + ".data"
         out = open(filename, "w")
         if out:
@@ -211,7 +207,7 @@ class Puncture:
 def main():
     """Main routine..."""
     print(" -------------------------------------------------------")
-    print(" --- puncture.py --- use flag -h for list of options ---")
+    print(" --- simulation.py --- use flag -h for list of options ---")
     print(" -------------------------------------------------------")
     #
     # set default values for variables
@@ -285,7 +281,7 @@ def usage():
     print("\t-tol: tolerance for elliptic solver [1.e-12]")
     print("\t-it_max: maximum number of iterations [50]")
     print("For example, to construct data with x_out = 6.0, call")
-    print("\tpython3 puncture.py -x_out 6.0")
+    print("\tpython simulation.py -x_out 6.0")
 
 
 if __name__ == '__main__':
