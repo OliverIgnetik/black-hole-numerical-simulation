@@ -12,7 +12,7 @@ Image credit : [NASA](https://www.nasa.gov/feature/goddard/2019/nasa-visualizati
 
 This approach recasts Einstein's equations using the well known 3+1 decomposition of spacetime. This decomposition splits the gravitational field equations into constraint and evolution equations. The constraint equations are crucial for imposing conditions on the gravitational fields at any moment in time.
 
-By the use of a conformal decomposition of the the constraint equations we can describe the initial gravitational field of the black hole using the puncture method. Note that this method is generalizable to model the initial data of multiple black holes with both linear and angular momentum, this is because of the resulting linearity of the decoupled constraint equation. This means not only can we model Schwarzschild spacetimes but also spacetimes described by the Kerr metric.
+By the use of a conformal decomposition of the the constraint equations we can describe the initial gravitational field of the black hole using the puncture method. Note that this method is generalizable to model the initial data of multiple black holes with both linear and angular momentum, this is because of the resulting linearity of the decoupled constraint equation. This means not only can we model Schwarzschild spacetimes but also spacetimes described by the Kerr metric. Despite the fact that this approach is valid for these more general solutions, we have not yet implemented incoporating the angular momentum of the black hole in the simulation. The code presented in this repository solves the constraint equations for initial data using the puncture method for spherically symmetric black holes with _linear momentum only_.
 
 Please see either _Gourgoulhon_ [1] or _Shibata_ [2] for a more in depth explanation of both the mathematics and the 3+1 decomposition of spacetime.
 
@@ -76,9 +76,9 @@ Please see `anaconda-project.yml` for environment dependencies and package versi
 
 ## Future Work
 
-- Generalize approach to account for black holes with angular momentum
-- Work on incorporating the initial constraint data in the evolution equations
 - Write up an accompanying latex formatted article explaining the mathematics of the simulation
+- Generalize code to account for black holes with angular momentum
+- Work on incorporating the initial constraint data in the evolution equations
 - Generalize this approach to the moving puncture method to model binary neutron star precession
 - Add a Graphical User Interface for easier manipulation of parameters
 
