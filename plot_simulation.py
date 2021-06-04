@@ -26,29 +26,29 @@ def puncture_plot(data_file: str, plot_file=0) -> None:
     FCT = np.reshape(fct, (n_grid, n_grid))
     fig = plt.figure()
     ax = fig.gca(projection='3d')
-    ax.plot_surface(X, Y, FCT, cmap=cm.autumn, linewidth=1,
+    ax.plot_surface(X, Y, FCT, cmap=cm.plasma, linewidth=1,
                     antialiased=False, alpha=0.2)
-    ax.contour(X, Y, FCT, zdir='z', offset=0.0, cmap=cm.autumn)
+    ax.contour(X, Y, FCT, zdir='z', offset=0.0, cmap=cm.plasma)
     #
     if find_executable('latex'):
         ax.set_xlabel(r"$x / {\mathcal M}$", size=14)
         ax.set_ylabel(r"$y / {\mathcal M}$", size=14)
-        ax.set_zlabel(r"$u$", size=14)
+        ax.set_zlabel(r"$U$", size=14)
     else:
         ax.set_xlabel("x / M", size=14)
         ax.set_ylabel("y / M", size=14)
-        ax.set_zlabel("u", size=14)
+        ax.set_zlabel("U ", size=14)
     ax.set_zlim(0.0, max(fct))
     ax.tick_params(axis='x', which='major', pad=-2)
     ax.tick_params(axis='y', which='major', pad=-2)
     ax.xaxis.set_rotate_label(False)
     ax.yaxis.set_rotate_label(False)
     ax.zaxis.set_rotate_label(False)
-    ax.view_init(elev=20., azim=-110)
+    ax.view_init(elev=23., azim=-100)
     if plot_file == 0:
         plt.show()
     else:
-        plt.savefig(plot_file, psi=300)
+        plt.savefig(plot_file)
 
 
 def main():
@@ -88,7 +88,7 @@ def usage():
     print(
         "\t-data: provide name of data_file [Default: simulation_data_16_4.0.data] ")
     print(
-        "\t-plot: if provided, plot will be saved to this file [Default: None]")
+        "\t-save: if provided, plot will be saved to this file [Default: None]")
     print("-"*30)
     print("For example, to make a plot of the file simulation_data_24_6.0.data")
     print("and save to file example.pdf, call")
