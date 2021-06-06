@@ -8,22 +8,28 @@ This is an attempt at modelling initial data and the associated conformal deviat
 
 Image credit : [NASA](https://www.nasa.gov/feature/goddard/2019/nasa-visualization-shows-a-black-hole-s-warped-world/)
 
+<!-- Please see [numerical_simulation_theory.pdf]() included in this repository for a detailed explanation of:
+
+- Decompostion of Einstein's Field Equations into constraint and evolution equations using 3+1 foliation
+- Puncture method for solving the constraint equation -->
+
 ## Methodology Overview
 
-This approach recasts Einstein's equations using the well known 3+1 decomposition of spacetime. This decomposition splits the gravitational field equations into constraint and evolution equations. The constraint equations are crucial for imposing conditions on the gravitational fields at any moment in time.
+This approach recasts Einstein's field equations using the well known 3+1 decomposition of spacetime. This decomposition splits the gravitational field equations into constraint and evolution equations. The constraint equations are crucial for imposing conditions on the gravitational fields at any moment in time.
 
-By the use of a conformal decomposition of the the constraint equations we can describe the initial gravitational field of the black hole using the puncture method. Note that this method is generalizable to model the initial data of multiple black holes with both linear and angular momentum, this is because of the resulting linearity of the decoupled constraint equation. This means not only can we model Schwarzschild spacetimes but also spacetimes described by the Kerr metric (black holes with non-zero angular momentum). Despite the fact that this approach is valid for these more general solutions, we have not yet incoporated the angular momentum of the black hole in the simulation. The code presented in this repository solves the constraint equations for initial data using the puncture method for spherically symmetric black holes with _linear momentum_.
+By the use of a conformal decomposition of the the constraint equations we can describe the initial gravitational field of the black hole using the puncture method. Note that this method is generalizable to model the initial data of multiple black holes with both linear and angular momentum, this is because of the resulting linearity of the decoupled constraint equation. This means me can model find solutions for spacetimes more general then that described by the Schwarzschild metric; such as those in which black holes have angular and linear momentum. Despite the fact that this approach is valid for these more general solutions, we have not yet incoporated the angular momentum of the black hole in the simulation. The code presented in this repository solves the constraint equations for initial data using the puncture method for spherically symmetric black holes with _linear momentum_.
 
 Please see either _Gourgoulhon_ [1] or _Shibata_ [2] for a more in depth explanation of both the mathematics and the 3+1 decomposition of spacetime.
 
+<!-- Please see [numerical_simulation_theory.pdf]() for further clarity. -->
+
 ## Motivation
 
-This project was an attempt to make use of the understanding gained in recent self-directed study of general relativity, the associated tensor calculus and differential geometry.
+This project was an attempt to make use of the understanding gained in recent self-directed study of general relativity, tensor calculus and differential geometry.
 
 ## Usage
 
-The script `simulation.py` makes use of the puncture method as described in Shibata [2], to construct initial data describing the conformal deviation of spacetime on the equatorial plane of a non-rotating black hole.
-`simulation.py` has a number of flags that can be used to customize the output of the script:
+The script `simulation.py` solves the constraint equation by making use of the puncture method as described in Shibata [2], to construct initial data describing the conformal deviation of spacetime on the equatorial plane of a black hole. `simulation.py` has a number of flags that can be used to customize the output of the script:
 
 ### `simulation.py flags`
 
@@ -73,7 +79,7 @@ Please see `anaconda-project.yml` for environment dependencies and package versi
 
 ## Features
 
-- Constructs initial data for a black hole with linear momentum using the puncture method
+- Solves the constraint equation and constructs initial data for a black hole with linear momentum using the puncture method
 - Configurable boundary and number of grid points used in simulation
 - Configurable linear momentum and location of the black hole
 - `elliptic_solver.py` interface with `scipy.la` for solving constraint equations
@@ -82,7 +88,7 @@ Please see `anaconda-project.yml` for environment dependencies and package versi
 
 - Write up an accompanying latex formatted article explaining the mathematics of the simulation
 - Generalize code to account for black holes with angular momentum
-- Work on incorporating the initial constraint data in the evolution equations
+- Work on **incorporating the initial data in the evolution equations**
 - Generalize this approach to the moving puncture method to model binary neutron star precession
 - Add a Graphical User Interface for easier manipulation of parameters
 
