@@ -39,19 +39,19 @@ The ADM 3+1 decomposition is given by:
 
 By the use of a conformal decomposition of the the constraint equations we can describe the initial gravitational field of the black hole using the puncture method. The key insight of the puncture method is that close to the puncture/singularity the spatial laplacian vanishes because the conformal factor supresses the divergent terms. Ultimately this conformal decomposition allows us to solve the non-linear elliptic puncture equation below (which is a transmutated version of the Hamiltonian constraint) which can be achieved with standard numerical techniques:
 
-<a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{150}&space;\bg_white&space;\large&space;\newline&space;\overline{D}^{2}&space;=&space;-\beta(\alpha&space;&plus;&space;\alpha&space;u&space;&plus;&space;1)^{-7}" target="_blank"><img src="https://latex.codecogs.com/png.latex?\dpi{150}&space;\bg_white&space;\large&space;\newline&space;\overline{D}^{2}&space;=&space;-\beta(\alpha&space;&plus;&space;\alpha&space;u&space;&plus;&space;1)^{-7}" title="\large \newline \overline{D}^{2} = -\beta(\alpha + \alpha u + 1)^{-7}" /></a>
+<a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{150}&space;\bg_white&space;\large&space;\overline{D}^{2}u&space;=&space;-\beta(\alpha&space;&plus;&space;\alpha&space;u&space;&plus;&space;1)^{-7}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\bg_white&space;\large&space;\overline{D}^{2}u&space;=&space;-\beta(\alpha&space;&plus;&space;\alpha&space;u&space;&plus;&space;1)^{-7}" title="\large \overline{D}^{2}u = -\beta(\alpha + \alpha u + 1)^{-7}" /></a>
 
 Once we have the solution of this non-linear elliptic equation we can use it to find the conformal factor and extrinsic curvature using:
 
 <a href="https://www.codecogs.com/eqnedit.php?latex=\bg_white&space;\textbf{Conformal&space;factor&space;and&space;relation&space;to&space;elliptic&space;equation}&space;\newline&space;\begin{align*}&space;\psi&space;&=&space;1&space;&plus;&space;\frac{1}{\alpha}&space;&plus;&space;u&space;\hspace{1cm}&space;\text{Conformal&space;factor}\\&space;\frac{1}{\alpha}&space;&=&space;\sum_{n}&space;\frac{\mathfrak{M}_n}{2s_n}&space;\hspace{1cm}&space;\text{Summation&space;of&space;black&space;hole&space;contributions&space;with&space;puncture&space;masses}&space;\end{align*}&space;\newline&space;\text{Where}&space;\hspace{0.1cm}&space;s_n&space;\hspace{0.1cm}&space;\text{is&space;the&space;coordinate&space;distance&space;from&space;the&space;nth&space;black&space;hole}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\bg_white&space;\textbf{Conformal&space;factor&space;and&space;relation&space;to&space;elliptic&space;equation}&space;\newline&space;\begin{align*}&space;\psi&space;&=&space;1&space;&plus;&space;\frac{1}{\alpha}&space;&plus;&space;u&space;\hspace{1cm}&space;\text{Conformal&space;factor}\\&space;\frac{1}{\alpha}&space;&=&space;\sum_{n}&space;\frac{\mathfrak{M}_n}{2s_n}&space;\hspace{1cm}&space;\text{Summation&space;of&space;black&space;hole&space;contributions&space;with&space;puncture&space;masses}&space;\end{align*}&space;\newline&space;\text{Where}&space;\hspace{0.1cm}&space;s_n&space;\hspace{0.1cm}&space;\text{is&space;the&space;coordinate&space;distance&space;from&space;the&space;nth&space;black&space;hole}" title="\textbf{Conformal factor and relation to elliptic equation} \newline \begin{align*} \psi &= 1 + \frac{1}{\alpha} + u \hspace{1cm} \text{Conformal factor}\\ \frac{1}{\alpha} &= \sum_{n} \frac{\mathfrak{M}_n}{2s_n} \hspace{1cm} \text{Summation of black hole contributions with puncture masses} \end{align*} \newline \text{Where} \hspace{0.1cm} s_n \hspace{0.1cm} \text{is the coordinate distance from the nth black hole}" /></a>
 
-Note that this method is generalizable to model the initial data of multiple black holes with both linear and angular momentum, this is because of the resulting linearity of the decoupled constraint equations. This means we can model solutions for spacetimes more general then that described by the Schwarzschild metric; such as those in which black holes have angular and linear momentum. Despite the fact that this approach is valid for these more general solutions, we have not yet incoporated the angular momentum of the black hole in the simulation. The code presented in this repository solves the constraint equations for initial data using the puncture method for spherically symmetric black holes with _linear momentum_. Note it should also be elucidated that this a vacuum solution as we assume the energy momentum tensor is zero in the region outside of the black hole.
-
-Please see either _Gourgoulhon_ [1] or _Shibata_ [2] for a more in depth explanation of both the mathematics and the 3+1 decomposition of spacetime.
+Note that this method is generalizable to model the initial data of multiple black holes with both linear and angular momentum, this is because of the resulting linearity of the decoupled constraint equations. This means we can model solutions for spacetimes more general then that described by the Schwarzschild metric; such as those in which black holes have angular and linear momentum. Despite the fact that this approach is valid for these more general solutions, we have not yet incorporated the angular momentum of the black hole in the simulation. The code presented in this repository solves the constraint equations for initial data using the puncture method for black holes with _linear momentum_. Note it should also be elucidated that this a vacuum solution as we assume the energy momentum tensor is zero in the region outside of the black hole.
 
 **Full explanatory notes to be uploaded on 09/06/21 by 5pm**
 
 <!-- **Please see [numerical_simulation_theory.pdf](numerical_simulation_theory.pdf)** for a comprehensive explanation of the decomposition and method-->
+
+Please see either _Gourgoulhon_ [1] or _Shibata_ [2] for a more in depth explanation the 3+1 decomposition of spacetime.
 
 ## Motivation
 
@@ -92,11 +92,11 @@ Once the data has been constructed using `simulation.py` we can make use of `plo
 
 ### Example simulation output
 
-Below is an example of initial data of a black hole with dimensionless linear momentum `P = (1,0,0)` located at the origin. `u` is the correction of the Schwarzschild conformal factor. Since we have u we can solve form the conformal factor and the extrinsic curvature of the hypersurface and fully solve the initial data of the black hole.
+Below is an example of initial data of a black hole with dimensionless linear momentum _P = (1,0,0)_ located at the origin. _u_ is the correction of the Schwarzschild conformal factor. Since we have _u_, by solving the non-linear elliptic version of the hamiltonian constraint equation; we can solve for the conformal factor and the extrinsic curvature of the hypersurface and fully solve the initial data of the black hole.
 
 ![Conformal deviation of Spacetime manifold](img/example_plot.png)
 
-Note that `M` as shown in the graph above is the _puncture mass_ which dominates the conformal factor close to the black hole's center. We use the _puncture mass_ to make all variables such as coordinate position and momentum dimensionless.
+Note that _M_ as shown in the graph above is the _puncture mass_ which dominates the conformal factor close to the black hole's center. We use the _puncture mass_ to make all variables such as coordinate position and momentum dimensionless.
 
 ## Packages
 
@@ -116,7 +116,6 @@ Please see `anaconda-project.yml` for environment dependencies and package versi
 
 ## Future Work
 
-- Write up an accompanying latex formatted article explaining the mathematics of the simulation
 - Generalize code to account for black holes with angular momentum
 - Work on **incorporating the initial data in the evolution equations**
 - Generalize this approach to the moving puncture method to model binary neutron star precession
