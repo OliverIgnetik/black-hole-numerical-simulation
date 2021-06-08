@@ -21,6 +21,8 @@ By the use of a conformal decomposition of the the constraint equations we can d
 
 Please see either _Gourgoulhon_ [1] or _Shibata_ [2] for a more in depth explanation of both the mathematics and the 3+1 decomposition of spacetime.
 
+**NOTE: FULL DERIVATION NOTES COMING WITHIN THE NEXT WEEK**
+
 <!-- Please see [numerical_simulation_theory.pdf]() for further clarity. -->
 
 ## Motivation
