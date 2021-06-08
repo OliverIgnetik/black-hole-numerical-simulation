@@ -2,28 +2,50 @@
 
 ## Summary
 
-This is an attempt at modelling initial data and the associated conformal deviation of spacetime hypersurfaces around a black hole with linear momentum. The curvature is calculated in close proximity to the equatorial plane of the black hole. The approach is based on the puncture method outlined in _Shibata_ [2].
+This is an attempt at modelling initial data and associated conformal deviation of spatial hypersurfaces around a black hole by solving the Hamiltonian constraint of the decomposed Einstein field equations. The extrinsic curvature of the hypersurfaces is calculated in close proximity to the equatorial plane of the black hole. By calculating the extrinsic curvature we can fully describe the initial data of the black hole. The approach is based on the puncture method for solving the conformally decomposed Hamiltonian constraint equation for the gravitational field outlined in _Shibata_ [2].
 
 ![Extrinsic Curvature of Spacetime manifold](img/bh_nasa.gif)
 
 Image credit : [NASA](https://www.nasa.gov/feature/goddard/2019/nasa-visualization-shows-a-black-hole-s-warped-world/)
 
-<!-- Please see [numerical_simulation_theory.pdf]() included in this repository for a detailed explanation of:
+**Full explanatory notes to be uploaded on 09/06/21 by 5pm**
 
-- Decompostion of Einstein's Field Equations into constraint and evolution equations using 3+1 foliation
-- Puncture method for solving the constraint equation -->
+<!-- **Please see [numerical_simulation_theory.pdf](numerical_simulation_theory.pdf)** included in this repository for a detailed explanation of:
+
+- Decompostion of Einstein's field equations into constraint and evolution equations using 3+1 decomposition
+- Puncture method for solving the constraint equation
+
+For pedagogical purposes a explanation of the 3+1 decomposition of Maxwell's
+equations are included as a stepping stone to understanding the more difficult decomposition in general relativity.
+
+**NOTE: Please be aware that the notes and theory behind this decomposition assumes a postgraduate familiarity with general relativity.
+-->
 
 ## Methodology Overview
 
 This approach recasts Einstein's field equations using the well known 3+1 decomposition of spacetime. This decomposition splits the gravitational field equations into constraint and evolution equations. The constraint equations are crucial for imposing conditions on the gravitational fields at any moment in time.
 
-By the use of a conformal decomposition of the the constraint equations we can describe the initial gravitational field of the black hole using the puncture method. Note that this method is generalizable to model the initial data of multiple black holes with both linear and angular momentum, this is because of the resulting linearity of the decoupled constraint equation. This means we can model solutions for spacetimes more general then that described by the Schwarzschild metric; such as those in which black holes have angular and linear momentum. Despite the fact that this approach is valid for these more general solutions, we have not yet incoporated the angular momentum of the black hole in the simulation. The code presented in this repository solves the constraint equations for initial data using the puncture method for spherically symmetric black holes with _linear momentum_.
+The approach begins with constructing the purely spatial equivalents of the fundamental spacetime objects in general relativity such as the metric tensor, Riemann tensor and the covariant derivative. By taking projections of Einstein's field equations and identifying the spatial cousins of the aforementioned fundamental objects we arrive at the famous ADM equations (named for its authors Richard Arnowitt, Stanley Deser and Charles W. Misner).
+
+The Einstein field equations in 4D spacetime in natural units:
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{150}&space;\bg_white&space;\large&space;R_{\mu\nu}&space;-&space;\frac{1}{2}&space;R&space;=&space;8&space;\pi&space;T_{\mu\nu}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\bg_white&space;\large&space;R_{\mu\nu}&space;-&space;\frac{1}{2}&space;R&space;=&space;8&space;\pi&space;T_{\mu\nu}" title="\large R_{\mu\nu} - \frac{1}{2} R = 8 \pi T_{\mu\nu}" /></a>
+
+And the ADM 3+1 Decomposition:
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=\bg_white&space;\textbf{ADM&space;Decomposition&space;of&space;Einstein&space;Field&space;Equations}&space;\newline&space;\newline&space;\text{Evolution&space;Equations}&space;\newline&space;\begin{align*}&space;\partial_t&space;\gamma_{ij}&space;&=&space;-2\alpha&space;K_{ij}&space;&plus;&space;\mathfrak{L}_{\beta}\gamma_{ij}&space;\\&space;\partial_t&space;K_{ij}&space;&=&space;\alpha&space;(R_{ij}&space;-&space;2K_{ik}K^{k}_{j}&space;&plus;&space;KK_{ij})&space;-&space;D_i&space;D_j&space;\alpha&space;&plus;&space;4\pi&space;\alpha&space;M_{ij}&space;&plus;&space;\mathfrak{L}_{\beta}K_{ij}&space;\end{align*}&space;\newline&space;\text{Constraint&space;Equations}&space;\newline&space;\begin{align*}&space;R&space;&plus;&space;K^{2}&space;-&space;K_{ij}K^{ij}&space;&=&space;16\pi\rho&space;\hspace{1cm}&space;\text{Hamiltonian&space;Constraint}\\&space;D_j(K^{ij}&space;-&space;\gamma^{ij}K)&=&space;8\pi&space;j_{i}&space;\hspace{1cm}&space;\text{Momentum&space;Constraint}&space;\end{align*}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\bg_white&space;\textbf{ADM&space;Decomposition&space;of&space;Einstein&space;Field&space;Equations}&space;\newline&space;\newline&space;\text{Evolution&space;Equations}&space;\newline&space;\begin{align*}&space;\partial_t&space;\gamma_{ij}&space;&=&space;-2\alpha&space;K_{ij}&space;&plus;&space;\mathfrak{L}_{\beta}\gamma_{ij}&space;\\&space;\partial_t&space;K_{ij}&space;&=&space;\alpha&space;(R_{ij}&space;-&space;2K_{ik}K^{k}_{j}&space;&plus;&space;KK_{ij})&space;-&space;D_i&space;D_j&space;\alpha&space;&plus;&space;4\pi&space;\alpha&space;M_{ij}&space;&plus;&space;\mathfrak{L}_{\beta}K_{ij}&space;\end{align*}&space;\newline&space;\text{Constraint&space;Equations}&space;\newline&space;\begin{align*}&space;R&space;&plus;&space;K^{2}&space;-&space;K_{ij}K^{ij}&space;&=&space;16\pi\rho&space;\hspace{1cm}&space;\text{Hamiltonian&space;Constraint}\\&space;D_j(K^{ij}&space;-&space;\gamma^{ij}K)&=&space;8\pi&space;j_{i}&space;\hspace{1cm}&space;\text{Momentum&space;Constraint}&space;\end{align*}" title="\textbf{ADM Decomposition of Einstein Field Equations} \newline \newline \text{Evolution Equations} \newline \begin{align*} \partial_t \gamma_{ij} &= -2\alpha K_{ij} + \mathfrak{L}_{\beta}\gamma_{ij} \\ \partial_t K_{ij} &= \alpha (R_{ij} - 2K_{ik}K^{k}_{j} + KK_{ij}) - D_i D_j \alpha + 4\pi \alpha M_{ij} + \mathfrak{L}_{\beta}K_{ij} \end{align*} \newline \text{Constraint Equations} \newline \begin{align*} R + K^{2} - K_{ij}K^{ij} &= 16\pi\rho \hspace{1cm} \text{Hamiltonian Constraint}\\ D_j(K^{ij} - \gamma^{ij}K)&= 8\pi j_{i} \hspace{1cm} \text{Momentum Constraint} \end{align*}" /></a>
+
+By the use of a conformal decomposition of the the constraint equations we can describe the initial gravitational field of the black hole using the puncture method. The key insight of the puncture method is that close the puncture (singularity) the spatial laplacian vanishes because the conformal factor supresses the divergent terms. Ultimately this conformal decompositions allowing us to solve the non-linear elliptic puncture equation below (which is the conformal decomposition of the Hamiltonian constraint) which can be achieved with standard numerical techniques:
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{150}&space;\bg_white&space;\large&space;\newline&space;\overline{D}^{2}&space;=&space;-\beta(\alpha&space;&plus;&space;\alpha&space;u&space;&plus;&space;1)^{-7}" target="_blank"><img src="https://latex.codecogs.com/png.latex?\dpi{150}&space;\bg_white&space;\large&space;\newline&space;\overline{D}^{2}&space;=&space;-\beta(\alpha&space;&plus;&space;\alpha&space;u&space;&plus;&space;1)^{-7}" title="\large \newline \overline{D}^{2} = -\beta(\alpha + \alpha u + 1)^{-7}" /></a>
+
+Note that this method is generalizable to model the initial data of multiple black holes with both linear and angular momentum, this is because of the resulting linearity of the decoupled constraint equations. This means we can model solutions for spacetimes more general then that described by the Schwarzschild metric; such as those in which black holes have angular and linear momentum. Despite the fact that this approach is valid for these more general solutions, we have not yet incoporated the angular momentum of the black hole in the simulation. The code presented in this repository solves the constraint equations for initial data using the puncture method for spherically symmetric black holes with _linear momentum_. Note it should also be elucidated that this a vacuum solution as we assume the energy momentum tensor is zero in the region outside of the black hole.
 
 Please see either _Gourgoulhon_ [1] or _Shibata_ [2] for a more in depth explanation of both the mathematics and the 3+1 decomposition of spacetime.
 
-**NOTE: FULL DERIVATION NOTES COMING WITHIN THE NEXT WEEK**
+**Full explanatory notes to be uploaded on 09/06/21 by 5pm**
 
-<!-- Please see [numerical_simulation_theory.pdf]() for further clarity. -->
+<!-- **Please see [numerical_simulation_theory.pdf](numerical_simulation_theory.pdf)** for a comprehensive explanation of the decomposition and method-->
 
 ## Motivation
 
@@ -64,7 +86,7 @@ Once the data has been constructed using `simulation.py` we can make use of `plo
 
 ### Example simulation output
 
-Below is an example of initial data of a black hole with dimensionless linear momentum `P = (1,0,0)` located at the origin. `u` is the correction of the Schwarzschild conformal factor.
+Below is an example of initial data of a black hole with dimensionless linear momentum `P = (1,0,0)` located at the origin. `u` is the correction of the Schwarzschild conformal factor. Since we have u we can solve form the conformal factor and the extrinsic curvature of the hypersurface and fully solve the initial data of the black hole.
 
 ![Conformal deviation of Spacetime manifold](img/example_plot.png)
 
