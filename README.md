@@ -2,7 +2,7 @@
 
 ## Summary
 
-This is an attempt at modelling initial data and the associated conformal deviation of spacetime around a black hole with linear momentum. The curvature is calculated in close proximity to the equatorial plane of the black hole. The approach is based on the puncture method outlined in _Shibata_ [2].
+This is an attempt at modelling initial data and the associated conformal deviation of spacetime hypersurfaces around a black hole with linear momentum. The curvature is calculated in close proximity to the equatorial plane of the black hole. The approach is based on the puncture method outlined in _Shibata_ [2].
 
 ![Extrinsic Curvature of Spacetime manifold](img/bh_nasa.gif)
 
@@ -17,7 +17,7 @@ Image credit : [NASA](https://www.nasa.gov/feature/goddard/2019/nasa-visualizati
 
 This approach recasts Einstein's field equations using the well known 3+1 decomposition of spacetime. This decomposition splits the gravitational field equations into constraint and evolution equations. The constraint equations are crucial for imposing conditions on the gravitational fields at any moment in time.
 
-By the use of a conformal decomposition of the the constraint equations we can describe the initial gravitational field of the black hole using the puncture method. Note that this method is generalizable to model the initial data of multiple black holes with both linear and angular momentum, this is because of the resulting linearity of the decoupled constraint equation. This means me can model find solutions for spacetimes more general then that described by the Schwarzschild metric; such as those in which black holes have angular and linear momentum. Despite the fact that this approach is valid for these more general solutions, we have not yet incoporated the angular momentum of the black hole in the simulation. The code presented in this repository solves the constraint equations for initial data using the puncture method for spherically symmetric black holes with _linear momentum_.
+By the use of a conformal decomposition of the the constraint equations we can describe the initial gravitational field of the black hole using the puncture method. Note that this method is generalizable to model the initial data of multiple black holes with both linear and angular momentum, this is because of the resulting linearity of the decoupled constraint equation. This means we can model solutions for spacetimes more general then that described by the Schwarzschild metric; such as those in which black holes have angular and linear momentum. Despite the fact that this approach is valid for these more general solutions, we have not yet incoporated the angular momentum of the black hole in the simulation. The code presented in this repository solves the constraint equations for initial data using the puncture method for spherically symmetric black holes with _linear momentum_.
 
 Please see either _Gourgoulhon_ [1] or _Shibata_ [2] for a more in depth explanation of both the mathematics and the 3+1 decomposition of spacetime.
 
