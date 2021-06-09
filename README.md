@@ -8,9 +8,9 @@ This is an attempt at modelling initial data and associated conformal deviation 
 
 Image credit : [NASA](https://www.nasa.gov/feature/goddard/2019/nasa-visualization-shows-a-black-hole-s-warped-world/)
 
-**Full explanatory notes to be uploaded on 09/06/21 by 5pm**
+### Detailed Theory Notes
 
-<!-- **Please see [numerical_simulation_theory.pdf](numerical_simulation_theory.pdf)** included in this repository for a detailed explanation of:
+**Please see** [numerical_relativity_theory_notes.pdf](numerical_relativity_theory_notes.pdf) included in this repository for a detailed explanation of:
 
 - Decompostion of Einstein's field equations into constraint and evolution equations using 3+1 decomposition
 - Puncture method for solving the constraint equation
@@ -18,8 +18,7 @@ Image credit : [NASA](https://www.nasa.gov/feature/goddard/2019/nasa-visualizati
 For pedagogical purposes a explanation of the 3+1 decomposition of Maxwell's
 equations are included as a stepping stone to understanding the more difficult decomposition in general relativity.
 
-**NOTE: Please be aware that the notes and theory behind this decomposition assumes a postgraduate familiarity with general relativity.
--->
+NOTE: Please be aware that the notes and theory behind this decomposition assumes a postgraduate familiarity with general relativity.
 
 ## Methodology Overview
 
@@ -35,7 +34,7 @@ The ADM 3+1 decomposition is given by:
 
 <a href="https://www.codecogs.com/eqnedit.php?latex=\bg_white&space;\textbf{ADM&space;Decomposition&space;of&space;Einstein&space;Field&space;Equations}&space;\newline&space;\newline&space;\text{Evolution&space;Equations}&space;\newline&space;\begin{align*}&space;\partial_t&space;\gamma_{ij}&space;&=&space;-2\alpha&space;K_{ij}&space;&plus;&space;\mathfrak{L}_{\beta}\gamma_{ij}&space;\\&space;\partial_t&space;K_{ij}&space;&=&space;\alpha&space;(R_{ij}&space;-&space;2K_{ik}K^{k}_{j}&space;&plus;&space;KK_{ij})&space;-&space;D_i&space;D_j&space;\alpha&space;&plus;&space;4\pi&space;\alpha&space;M_{ij}&space;&plus;&space;\mathfrak{L}_{\beta}K_{ij}&space;\end{align*}&space;\newline&space;\text{Constraint&space;Equations}&space;\newline&space;\begin{align*}&space;R&space;&plus;&space;K^{2}&space;-&space;K_{ij}K^{ij}&space;&=&space;16\pi\rho&space;\hspace{1cm}&space;\text{Hamiltonian&space;Constraint}\\&space;D_j(K^{ij}&space;-&space;\gamma^{ij}K)&=&space;8\pi&space;j_{i}&space;\hspace{1cm}&space;\text{Momentum&space;Constraint}&space;\end{align*}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\bg_white&space;\textbf{ADM&space;Decomposition&space;of&space;Einstein&space;Field&space;Equations}&space;\newline&space;\newline&space;\text{Evolution&space;Equations}&space;\newline&space;\begin{align*}&space;\partial_t&space;\gamma_{ij}&space;&=&space;-2\alpha&space;K_{ij}&space;&plus;&space;\mathfrak{L}_{\beta}\gamma_{ij}&space;\\&space;\partial_t&space;K_{ij}&space;&=&space;\alpha&space;(R_{ij}&space;-&space;2K_{ik}K^{k}_{j}&space;&plus;&space;KK_{ij})&space;-&space;D_i&space;D_j&space;\alpha&space;&plus;&space;4\pi&space;\alpha&space;M_{ij}&space;&plus;&space;\mathfrak{L}_{\beta}K_{ij}&space;\end{align*}&space;\newline&space;\text{Constraint&space;Equations}&space;\newline&space;\begin{align*}&space;R&space;&plus;&space;K^{2}&space;-&space;K_{ij}K^{ij}&space;&=&space;16\pi\rho&space;\hspace{1cm}&space;\text{Hamiltonian&space;Constraint}\\&space;D_j(K^{ij}&space;-&space;\gamma^{ij}K)&=&space;8\pi&space;j_{i}&space;\hspace{1cm}&space;\text{Momentum&space;Constraint}&space;\end{align*}" title="\textbf{ADM Decomposition of Einstein Field Equations} \newline \newline \text{Evolution Equations} \newline \begin{align*} \partial_t \gamma_{ij} &= -2\alpha K_{ij} + \mathfrak{L}_{\beta}\gamma_{ij} \\ \partial_t K_{ij} &= \alpha (R_{ij} - 2K_{ik}K^{k}_{j} + KK_{ij}) - D_i D_j \alpha + 4\pi \alpha M_{ij} + \mathfrak{L}_{\beta}K_{ij} \end{align*} \newline \text{Constraint Equations} \newline \begin{align*} R + K^{2} - K_{ij}K^{ij} &= 16\pi\rho \hspace{1cm} \text{Hamiltonian Constraint}\\ D_j(K^{ij} - \gamma^{ij}K)&= 8\pi j_{i} \hspace{1cm} \text{Momentum Constraint} \end{align*}" /></a>
 
-<!-- **Please see [numerical_simulation_theory.pdf](numerical_simulation_theory.pdf)** for full explanation -->
+<!-- **Please see** [numerical_relativity_theory_notes.pdf](numerical_relativity_theory_notes.pdf)** for full explanation
 
 By the use of a conformal decomposition of the the constraint equations we can describe the initial gravitational field of the black hole using the puncture method. The key insight of the puncture method is that close to the puncture/singularity the spatial laplacian vanishes because the conformal factor supresses the divergent terms. Ultimately this conformal decomposition allows us to solve the non-linear elliptic puncture equation below (which is a transmutated version of the Hamiltonian constraint) which can be achieved with standard numerical techniques:
 
@@ -49,9 +48,7 @@ Note that this method is generalizable to model the initial data of multiple bla
 
 **Full explanatory notes to be uploaded on 09/06/21 by 5pm**
 
-<!-- **Please see [numerical_simulation_theory.pdf](numerical_simulation_theory.pdf)** for a comprehensive explanation of the decomposition and method-->
-
-Please see either _Gourgoulhon_ [1] or _Shibata_ [2] for a more in depth explanation the 3+1 decomposition of spacetime.
+**Please see** [numerical_relativity_theory_notes.pdf](numerical_relativity_theory_notes.pdf)** for a comprehensive explanation of the decomposition of spacetime and puncture method for solving the constraint equations
 
 ## Motivation
 
