@@ -29,8 +29,7 @@ class Puncture:
         self.boundary = boundary
         self.delta = 2.0 * boundary / grid_dim
 
-        # set up coordinates: use cell-centered grid covering (-boundary, boundary)
-        # in each dimension; see (B.14)
+        # set up coordinates: use cell-centered grid covering (-boundary, boundary) in each dimension
         half_delta = self.delta / 2.0
         self.x = linspace(half_delta - boundary, boundary -
                           half_delta, grid_dim)
@@ -85,7 +84,7 @@ class Puncture:
         for i in range(1, grid_dim - 1):
             for j in range(1, grid_dim - 1):
                 for k in range(1, grid_dim - 1):
-                    # compute h' from (B.39)
+                    # compute h'
                     temp = self.alpha[i, j, k] * (1.0 + self.u[i, j, k]) + 1.0
                     fct[i, j, k] = (-7.0 * self.beta[i, j, k] *
                                     self.alpha[i, j, k] / temp ** 8)
@@ -125,7 +124,7 @@ class Puncture:
                     temp = self.alpha[i, j, k] * (1.0 + self.u[i, j, k]) + 1.0
                     rhs = -self.beta[i, j, k] / temp ** 7
 
-                    # then compute difference to get residual, see (B.35)
+                    # then compute difference to get residual
                     self.res[i, j, k] = lhs - rhs
                     residual_norm += self.res[i, j, k] ** 2
 
@@ -153,7 +152,7 @@ class Puncture:
                     l_z = s_z / s_bh
                     lP = l_x * p_x + l_y * p_y + l_z * p_z
 
-                    # construct extrinsic curvature, see Eq. (3.43)
+                    # construct extrinsic curvature
                     fac = 3.0 / (2.0 * s2)
                     A_xx = fac * (2.0 * p_x * l_x - (1.0 - l_x * l_x) * lP)
                     A_yy = fac * (2.0 * p_y * l_y - (1.0 - l_y * l_y) * lP)
@@ -168,7 +167,7 @@ class Puncture:
                         2.0*(A_xy ** 2 + A_xz ** 2 + A_yz ** 2)
                     )
 
-                    # now compute alpha and beta from (3.47) and (3.49)
+                    # now compute alpha and beta
                     self.alpha[i, j, k] = 2.0 * s_bh
                     self.beta[i, j, k] = self.alpha[i, j, k] ** 7 * A2 / 8.0
 
