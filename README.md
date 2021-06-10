@@ -54,7 +54,7 @@ This project was an attempt to make use of the understanding gained in recent se
 
 ## Usage
 
-The script `simulation.py` solves the constraint equation by making use of the puncture method as described in Shibata [2], to construct initial data describing the conformal deviation of spacetime on the equatorial plane of a black hole. `simulation.py` has a number of flags that can be used to customize the output of the script:
+The script `simulation.py` solves the constraint equation by making use of the puncture method as described in _Shibata_ [2], to construct initial data describing the conformal deviation of spacetime on the equatorial plane of a black hole. `simulation.py` has a number of flags that can be used to customize the output of the script:
 
 ### `simulation.py flags`
 
