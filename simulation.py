@@ -3,6 +3,10 @@ import sys
 from numpy import zeros, sqrt, linspace
 from elliptic_solver import EllipticSolver
 
+########################################################################################
+# Please make use of "./numerical_methods_notes.pdf" to help with understanding the code
+########################################################################################
+
 
 class Puncture:
     """Class that handles construction of puncture data."""

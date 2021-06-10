@@ -20,6 +20,8 @@ equations are included as a stepping stone to understanding the more difficult d
 
 NOTE: Please be aware that the notes and theory behind this decomposition assumes a postgraduate familiarity with general relativity.
 
+**Please see** [numerical_methods_notes.pdf](numerical_methods_notes.pdf) for notes on the approach used to solve the non-linear elliptic puncture equation.
+
 ## Methodology Overview
 
 This approach recasts Einstein's field equations using the well known 3+1 decomposition of spacetime. This decomposition splits the gravitational field equations into constraint and evolution equations. The constraint equations are crucial for imposing conditions on the gravitational fields at any moment in time.
@@ -44,9 +46,9 @@ Once we have the solution of this non-linear elliptic equation we can use it to 
 
 <a href="https://www.codecogs.com/eqnedit.php?latex=\bg_white&space;\textbf{Conformal&space;factor&space;and&space;relation&space;to&space;elliptic&space;equation}&space;\newline&space;\begin{align*}&space;\psi&space;&=&space;1&space;&plus;&space;\frac{1}{\alpha}&space;&plus;&space;u&space;\hspace{1cm}&space;\text{Conformal&space;factor}\\&space;\frac{1}{\alpha}&space;&=&space;\sum_{n}&space;\frac{\mathfrak{M}_n}{2s_n}&space;\hspace{1cm}&space;\text{Summation&space;of&space;black&space;hole&space;contributions&space;with&space;puncture&space;masses}&space;\end{align*}&space;\newline&space;\text{Where}&space;\hspace{0.1cm}&space;s_n&space;\hspace{0.1cm}&space;\text{is&space;the&space;coordinate&space;distance&space;from&space;the&space;nth&space;black&space;hole}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\bg_white&space;\textbf{Conformal&space;factor&space;and&space;relation&space;to&space;elliptic&space;equation}&space;\newline&space;\begin{align*}&space;\psi&space;&=&space;1&space;&plus;&space;\frac{1}{\alpha}&space;&plus;&space;u&space;\hspace{1cm}&space;\text{Conformal&space;factor}\\&space;\frac{1}{\alpha}&space;&=&space;\sum_{n}&space;\frac{\mathfrak{M}_n}{2s_n}&space;\hspace{1cm}&space;\text{Summation&space;of&space;black&space;hole&space;contributions&space;with&space;puncture&space;masses}&space;\end{align*}&space;\newline&space;\text{Where}&space;\hspace{0.1cm}&space;s_n&space;\hspace{0.1cm}&space;\text{is&space;the&space;coordinate&space;distance&space;from&space;the&space;nth&space;black&space;hole}" title="\textbf{Conformal factor and relation to elliptic equation} \newline \begin{align*} \psi &= 1 + \frac{1}{\alpha} + u \hspace{1cm} \text{Conformal factor}\\ \frac{1}{\alpha} &= \sum_{n} \frac{\mathfrak{M}_n}{2s_n} \hspace{1cm} \text{Summation of black hole contributions with puncture masses} \end{align*} \newline \text{Where} \hspace{0.1cm} s_n \hspace{0.1cm} \text{is the coordinate distance from the nth black hole}" /></a>
 
-Note that this method is generalizable to model the initial data of multiple black holes with both linear and angular momentum, this is because of the resulting linearity of the decoupled constraint equations. This means we can model solutions for spacetimes more general then that described by the Schwarzschild metric; such as those in which black holes have angular and linear momentum. Despite the fact that this approach is valid for these more general solutions, we have not yet incorporated the angular momentum of the black hole in the simulation. The code presented in this repository solves the constraint equations for initial data using the puncture method for black holes with _linear momentum_. Note it should also be elucidated that this a vacuum solution as we assume the energy momentum tensor is zero in the region outside of the black hole.
+**Please see** [numerical_methods_notes.pdf](numerical_methods_notes.pdf) for an explanation of the approach used to solve the non-linear elliptic puncture equation.
 
-**Please see** [numerical_relativity_theory_notes.pdf](numerical_relativity_theory_notes.pdf) for a comprehensive explanation of the decomposition of spacetime and puncture method for solving the constraint equations
+Note that this method is generalizable to model the initial data of multiple black holes with both linear and angular momentum, this is because of the resulting linearity of the decoupled constraint equations. This means we can model solutions for spacetimes more general then that described by the Schwarzschild metric; such as those in which black holes have angular and linear momentum. Despite the fact that this approach is valid for these more general solutions, we have not yet incorporated the angular momentum of the black hole in the simulation. The code presented in this repository solves the constraint equations for initial data using the puncture method for black holes with _linear momentum_. Note it should also be elucidated that this a vacuum solution as we assume the energy momentum tensor is zero in the region outside of the black hole.
 
 ## Motivation
 
@@ -107,7 +109,7 @@ Please see `anaconda-project.yml` for environment dependencies and package versi
 - Solves the constraint equation and constructs initial data for a black hole with linear momentum using the puncture method
 - Configurable boundary and number of grid points used in simulation
 - Configurable linear momentum and location of the black hole
-- `elliptic_solver.py` interface with `scipy.la` for solving constraint equations
+- `elliptic_solver.py` interface with `scipy.la` for solving constraint equations. **Please see** [numerical_methods_notes.pdf](numerical_methods_notes.pdf) for an explanation of the approach used to solve the non-linear elliptic puncture equation.
 
 ## Future Work
 

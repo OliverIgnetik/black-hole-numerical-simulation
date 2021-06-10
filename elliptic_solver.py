@@ -1,6 +1,10 @@
 import numpy as np
 import scipy.linalg as la
 
+########################################################################################
+# Please make use of "./numerical_methods_notes.pdf" to help with understanding the code
+########################################################################################
+
 
 class EllipticSolver:
     """Class Elliptic solves Poisson-type elliptic equations of the form:
