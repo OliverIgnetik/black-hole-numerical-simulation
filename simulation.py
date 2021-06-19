@@ -1,19 +1,23 @@
 """Code to construct puncture initial data for single black hole."""
 import sys
 from numpy import zeros, sqrt, linspace
-from elliptic_solver import EllipticSolver
+from elliptic_solver import EllipticEquationSolver
+from typing import Tuple
+"""
+Code References
+1. T. Baumgarte and S. Shapiro, Numerical Relativity. Cambridge: Cambridge University Press, 2010.
+2. T. Baumgarte and S. Shapiro, Numerical Relativity : Starting from Scratch. Cambridge: Cambridge, 2021.
+"""
 
 ########################################################################################
 # Please make use of "./numerical_methods_notes.pdf" to help with understanding the code
-
-# Reference for code : T. Baumgarte and S. Shapiro, Numerical relativity. Cambridge: Cambridge University Press, 2010.
 ########################################################################################
 
 
 class Puncture:
     """Class that handles construction of puncture data."""
 
-    def __init__(self, bh_location: tuple[float, float, float], linear_momentum: tuple[float, float, float], grid_dim: int, boundary: float) -> None:
+    def __init__(self, bh_location: Tuple[float, float, float], linear_momentum: Tuple[float, float, float], grid_dim: int, boundary: float) -> None:
         """Arguments to constructor specify physical parameters:
         - location of puncture (bh_location)
         - linear momentum (linear_momentum)
@@ -23,7 +27,7 @@ class Puncture:
         self.bh_location = bh_location
         self.linear_momentum = linear_momentum
         # echo out parameters
-        print("Constructing class Puncture for single black hole")
+        print("Constructing puncture data for single black hole")
         print(
             f"at bh_location = ({bh_location[0]}, {bh_location[1]}, {bh_location[2]} )")
         print(
@@ -44,8 +48,8 @@ class Puncture:
         self.z = linspace(half_delta - boundary, boundary -
                           half_delta, grid_dim)
 
-        # allocate elliptic solver
-        self.solver = EllipticSolver(self.x, self.y, self.z)
+        # setup elliptic solver
+        self.solver = EllipticEquationSolver(self.x, self.y, self.z)
 
         # allocate memory for functions u, alpha, beta, and residual
         self.alpha = zeros((grid_dim, grid_dim, grid_dim))
@@ -61,7 +65,7 @@ class Puncture:
         residual_norm = self.__residual()
         print(f"Initial Residual = { residual_norm}")
         print(
-            f"Using up to {it_max} iteration steps to reach tolerance of {tol}")
+            f" Maximum iterations : {it_max} steps to reach tolerance : {tol}")
 
         # now iterate...
         it_step = 0
@@ -69,10 +73,10 @@ class Puncture:
             it_step += 1
             self.__update_u()
             residual_norm = self.__residual()
-            print(f"Residual after {it_step} iterations : {residual_norm}")
+            print(f"Residual : {it_step} iterations : {residual_norm}")
 
         if (residual_norm < tol):
-            print(" Done!")
+            print(" Tolerance level for residual achieved.")
         else:
             raise RuntimeError(
                 'It is not possible to reduce the residual norm below {tol}\n Terminating simulation...')
@@ -102,7 +106,7 @@ class Puncture:
         # set up right-hand side
         self.solver.setup_rhs(rhs)
 
-        # solve to find delta_u, see (B.36)
+        # solve to find delta_u
         delta_u = self.solver.solve()
 
         # update u

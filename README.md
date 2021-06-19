@@ -2,7 +2,7 @@
 
 ## Summary
 
-This is an attempt at modelling initial data and associated conformal deviation of spatial hypersurfaces around a black hole by solving the Hamiltonian constraint of the decomposed Einstein field equations. By calculating the extrinsic curvature of the general spacetime slices/hypersurfaces we can fully describe the initial data of the black hole. The approach is based on the puncture method for solving the conformally decomposed Hamiltonian constraint equation for the gravitational field outlined in _Shibata_ [2] and _Shapiro_ [3].
+This is an attempt at modelling initial data and associated conformal deviation of spatial hypersurfaces around a black hole by solving the Hamiltonian constraint of the decomposed Einstein field equations. By calculating the extrinsic curvature of the general spacetime slices/hypersurfaces we can fully describe the initial data of the black hole. The approach is based on the puncture method for solving the conformally decomposed Hamiltonian constraint equation for the gravitational field outlined in _Shibata_ [2] and _Shapiro_ [3], [4].
 
 ![Extrinsic Curvature of Spacetime manifold](img/bh_nasa.gif)
 
@@ -122,24 +122,26 @@ Please see `anaconda-project.yml` for environment dependencies and package versi
 
 ### Numerical Relativity
 
-[1] E. Gourgoulhon, _3+1 formalism in general relativity_. Heidelberg: Springer, 2012.
+[1] E. Gourgoulhon, _3+1 Formalism in General Relativity_. Heidelberg: Springer, 2012.
 
-[2] M. Shibata, _Numerical relativity_. Singapore: World Scientific Publishing Co. Pte. Ltd., 2016.
+[2] M. Shibata, _Numerical Relativity_. Singapore: World Scientific Publishing Co. Pte. Ltd., 2016.
 
-[3] T. Baumgarte and S. Shapiro, _Numerical relativity_. Cambridge: Cambridge University Press, 2010.
+[3] T. Baumgarte and S. Shapiro, _Numerical Relativity_. Cambridge: Cambridge University Press, 2010.
+
+[4] T. Baumgarte and S. Shapiro, _Numerical Relativity : Starting from Scratch_. Cambridge: Cambridge, 2021.
 
 ### General Relativity and Differential Geometry
 
-[4] B. Schutz, _A first course in general relativity_. Cambridge [etc.]: Cambridge University Press, 2018.
+[5] B. Schutz, _A First Course in General Relativity_. Cambridge [etc.]: Cambridge University Press, 2018.
 
-[5] C. Misner, K. Thorne and J. Wheeler, _Gravitation_. New York: Freeman, 1995.
+[6] C. Misner, K. Thorne and J. Wheeler, _Gravitation_. New York: Freeman, 1995.
 
-[6] S. Chandrasekhar, _The mathematical theory of black holes_. Oxford u.a.: Clarendon Press, 1992.
+[7] S. Chandrasekhar, _The Mathematical Theory of Black Holes_. Oxford u.a.: Clarendon Press, 1992.
 
-[7] D. Neuenschwander, _Tensor calculus for physics_. John Hopkins University Press, 2015.
+[8] D. Neuenschwander, _Tensor Calculus for Physics_. John Hopkins University Press, 2015.
 
-[8] S. Carroll, _Spacetime and geometry_. Harlow: Pearson, 2014.
+[9] S. Carroll, _Spacetime and Geometry_. Harlow: Pearson, 2014.
 
-[9] N. Straumann, _General relativity_. Heidelberg: Springer, 2013.
+[10] N. Straumann, _General Relativity_. Heidelberg: Springer, 2013.
 
-[10] J. Hubbard and B. Hubbard, _Vector calculus, linear algebra, and differential forms_, 5th ed. New York: Matrix Editions, 2015.
+[11] J. Hubbard and B. Hubbard, _Vector Calculus, Linear Algebra, and Differential Forms_, 5th ed. New York: Matrix Editions, 2015.
