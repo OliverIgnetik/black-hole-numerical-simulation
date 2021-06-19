@@ -5,6 +5,8 @@ from elliptic_solver import EllipticSolver
 
 ########################################################################################
 # Please make use of "./numerical_methods_notes.pdf" to help with understanding the code
+
+Reference for code : T. Baumgarte and S. Shapiro, Numerical relativity. Cambridge: Cambridge University Press, 2010.
 ########################################################################################
 
 
