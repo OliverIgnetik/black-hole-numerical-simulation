@@ -2,7 +2,7 @@
 
 ## Summary
 
-This is an attempt at modelling initial data and associated conformal deviation of spatial hypersurfaces around a black hole by solving the Hamiltonian constraint of the decomposed Einstein field equations. By calculating the extrinsic curvature of the general spacetime slices/hypersurfaces we can fully describe the initial data of the black hole. The approach is based on the puncture method for solving the conformally decomposed Hamiltonian constraint equation for the gravitational field outlined in _Shibata_ [2].
+This is an attempt at modelling initial data and associated conformal deviation of spatial hypersurfaces around a black hole by solving the Hamiltonian constraint of the decomposed Einstein field equations. By calculating the extrinsic curvature of the general spacetime slices/hypersurfaces we can fully describe the initial data of the black hole. The approach is based on the puncture method for solving the conformally decomposed Hamiltonian constraint equation for the gravitational field outlined in _Shibata_ [2] and _Shapiro_ [3].
 
 ![Extrinsic Curvature of Spacetime manifold](img/bh_nasa.gif)
 
