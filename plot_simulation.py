@@ -7,6 +7,7 @@ import numpy as np
 import matplotlib
 from distutils.spawn import find_executable
 
+# based on reference : T. Baumgarte and S. Shapiro, Numerical relativity. Cambridge: Cambridge University Press, 2010.
 
 def puncture_plot(data_file: str, plot_file=0) -> None:
     if find_executable('latex'):
