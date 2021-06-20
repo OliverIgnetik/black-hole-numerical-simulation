@@ -55,7 +55,7 @@ class Puncture:
         self.alpha = zeros((grid_dim, grid_dim, grid_dim))
         self.beta = zeros((grid_dim, grid_dim, grid_dim))
         self.u = zeros((grid_dim, grid_dim, grid_dim))
-        self.res = zeros((grid_dim, grid_dim, grid_dim))
+        self.residual_value = zeros((grid_dim, grid_dim, grid_dim))
 
     def construct_solution(self, tol: float, it_max: float) -> None:
         """Construct solution iteratively, provide tolerance and maximum
@@ -86,7 +86,7 @@ class Puncture:
         takes one iteration step.
         """
 
-        # set up linear term and right-hand side for SolvePoisson...
+        # set up linear term and right-hand side for poisson equation solver
         grid_dim = self.grid_dim
         fct = zeros((grid_dim, grid_dim, grid_dim))
         rhs = zeros((grid_dim, grid_dim, grid_dim))
@@ -98,9 +98,9 @@ class Puncture:
                     temp = self.alpha[i, j, k] * (1.0 + self.u[i, j, k]) + 1.0
                     fct[i, j, k] = (-7.0 * self.beta[i, j, k] *
                                     self.alpha[i, j, k] / temp ** 8)
-                    rhs[i, j, k] = -self.res[i, j, k]
+                    rhs[i, j, k] = -self.residual_value[i, j, k]
 
-        # now update Poisson solver
+        # now update poisson solver
         self.solver.setup_matrix(fct)
 
         # set up right-hand side
@@ -135,8 +135,8 @@ class Puncture:
                     rhs = -self.beta[i, j, k] / temp ** 7
 
                     # then compute difference to get residual
-                    self.res[i, j, k] = lhs - rhs
-                    residual_norm += self.res[i, j, k] ** 2
+                    self.residual_value[i, j, k] = lhs - rhs
+                    residual_norm += self.residual_value[i, j, k] ** 2
 
         residual_norm = sqrt(residual_norm) * self.delta ** 3
         return residual_norm
