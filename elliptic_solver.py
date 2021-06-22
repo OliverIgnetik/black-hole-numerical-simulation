@@ -6,9 +6,10 @@ import scipy.linalg as la
 ########################################################################################
 
 """
-Code References
+Code Influenced by approaches in:  
 1. T. Baumgarte and S. Shapiro, Numerical Relativity. Cambridge: Cambridge University Press, 2010.
-2. T. Baumgarte and S. Shapiro, Numerical Relativity : Starting from Scratch. Cambridge: Cambridge, 2021.
+2. M. Shibata, Numerical Relativity. Singapore: World Scientific Publishing Co. Pte. Ltd., 2016.
+3. T. Baumgarte and S. Shapiro, Numerical Relativity : Starting from Scratch. Cambridge: Cambridge, 2021.
 """
 
 
