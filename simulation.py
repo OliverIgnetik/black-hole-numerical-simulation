@@ -30,11 +30,11 @@ class Puncture:
         # echo out parameters
         print("Constructing puncture data for single black hole")
         print(
-            f"at bh_location = ({bh_location[0]}, {bh_location[1]}, {bh_location[2]} )")
+            f"at bh_location = ( {bh_location[0]}, {bh_location[1]}, {bh_location[2]} )")
         print(
-            f"with momentum p = ({linear_momentum[0]},{linear_momentum[1]}, {linear_momentum[2]}")
+            f"with momentum p = ( {linear_momentum[0]},{linear_momentum[1]}, {linear_momentum[2]} )")
         print(
-            f"Using {grid_dim}\b^3 gridpoints with outer boundary at {boundary}")
+            f"Using {grid_dim} \b^3 gridpoints with outer boundary at {boundary}")
         # set up grid
         self.grid_dim = grid_dim
         self.boundary = boundary
@@ -64,7 +64,7 @@ class Puncture:
 
         self.__setup_alpha_beta()
         residual_norm = self.__residual()
-        print(f"Initial Residual = { residual_norm}")
+        print(f"Initial Residual = {residual_norm}")
         print(
             f" Maximum iterations : {it_max} steps to reach tolerance : {tol}")
 
